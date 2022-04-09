@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E8A74F92801EA59004D5566 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8A74F82801EA59004D5566 /* LoginController.swift */; };
+		1E8A74FB2801EA63004D5566 /* SignupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8A74FA2801EA63004D5566 /* SignupController.swift */; };
 		AA7C748427DDDA6100BA0A97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C748327DDDA6100BA0A97 /* AppDelegate.swift */; };
 		AA7C748D27DDDA6C00BA0A97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA7C748C27DDDA6C00BA0A97 /* Assets.xcassets */; };
 		AA7C749027DDDA6C00BA0A97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA7C748E27DDDA6C00BA0A97 /* LaunchScreen.storyboard */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E8A74F82801EA59004D5566 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		1E8A74FA2801EA63004D5566 /* SignupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupController.swift; sourceTree = "<group>"; };
 		AA7C748027DDDA6100BA0A97 /* Drip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA7C748327DDDA6100BA0A97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA7C748C27DDDA6C00BA0A97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -77,6 +81,8 @@
 				AA7C749C27DDE6CF00BA0A97 /* MatchListController.swift */,
 				AA7C749E27DDE6E200BA0A97 /* ChatListController.swift */,
 				AA7C74A027DDE6F200BA0A97 /* ProfileController.swift */,
+				1E8A74F82801EA59004D5566 /* LoginController.swift */,
+				1E8A74FA2801EA63004D5566 /* SignupController.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -154,9 +160,11 @@
 				AA7C74A127DDE6F200BA0A97 /* ProfileController.swift in Sources */,
 				AA7C749827DDDF4800BA0A97 /* AppFactory.swift in Sources */,
 				AA7C749F27DDE6E200BA0A97 /* ChatListController.swift in Sources */,
+				1E8A74FB2801EA63004D5566 /* SignupController.swift in Sources */,
 				AA7C748427DDDA6100BA0A97 /* AppDelegate.swift in Sources */,
 				AA7C749D27DDE6CF00BA0A97 /* MatchListController.swift in Sources */,
 				AA7C749B27DDE6B600BA0A97 /* FeedController.swift in Sources */,
+				1E8A74F92801EA59004D5566 /* LoginController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

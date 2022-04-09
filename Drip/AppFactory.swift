@@ -1,6 +1,11 @@
 import UIKit
 
 final class AppFactory {
+    func buildLoginViewController() -> UIViewController {
+        let login = LoginViewController()
+        return login
+    }
+    
     func buildTabBarController() -> UITabBarController {
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [
