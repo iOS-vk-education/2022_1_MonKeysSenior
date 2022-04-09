@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E8A74EF2801D63F004D5566 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8A74EE2801D63F004D5566 /* Response.swift */; };
+		1E8A74F32801E60F004D5566 /* Reaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8A74F22801E60F004D5566 /* Reaction.swift */; };
+		1E8A74F52801E7BD004D5566 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8A74F42801E7BD004D5566 /* Search.swift */; };
 		1E8BF67827F9FEAE00B911AE /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8BF67727F9FEAE00B911AE /* Network.swift */; };
 		1E8BF67B27FA048E00B911AE /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8BF67A27FA048E00B911AE /* Credentials.swift */; };
 		1E8BF67D27FA04D200B911AE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8BF67C27FA04D200B911AE /* User.swift */; };
@@ -21,6 +24,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E8A74EE2801D63F004D5566 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		1E8A74F22801E60F004D5566 /* Reaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reaction.swift; sourceTree = "<group>"; };
+		1E8A74F42801E7BD004D5566 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		1E8BF67727F9FEAE00B911AE /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		1E8BF67A27FA048E00B911AE /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		1E8BF67C27FA04D200B911AE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -60,6 +66,9 @@
 			children = (
 				1E8BF67A27FA048E00B911AE /* Credentials.swift */,
 				1E8BF67C27FA04D200B911AE /* User.swift */,
+				1E8A74EE2801D63F004D5566 /* Response.swift */,
+				1E8A74F22801E60F004D5566 /* Reaction.swift */,
+				1E8A74F42801E7BD004D5566 /* Search.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -181,8 +190,11 @@
 				1E8BF67B27FA048E00B911AE /* Credentials.swift in Sources */,
 				AA7C749F27DDE6E200BA0A97 /* ChatListController.swift in Sources */,
 				AA7C748427DDDA6100BA0A97 /* AppDelegate.swift in Sources */,
+				1E8A74F32801E60F004D5566 /* Reaction.swift in Sources */,
 				1E8BF67D27FA04D200B911AE /* User.swift in Sources */,
 				AA7C749D27DDE6CF00BA0A97 /* MatchListController.swift in Sources */,
+				1E8A74EF2801D63F004D5566 /* Response.swift in Sources */,
+				1E8A74F52801E7BD004D5566 /* Search.swift in Sources */,
 				1E8BF67827F9FEAE00B911AE /* Network.swift in Sources */,
 				AA7C749B27DDE6B600BA0A97 /* FeedController.swift in Sources */,
 			);

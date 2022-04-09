@@ -43,7 +43,8 @@ final class AppFactory {
         let profileItem = UITabBarItem(title: "Профиль", image: UIImage(named: "profileIcon"), selectedImage: nil)
         profile.tabBarItem = profileItem
 
-        loginRequest(credentials: Credentials(email: "lol", password: "prikol")) { (result: Result) in
+        // example
+        loginRequest(credentials: Credentials(email: "mumeu222@mail.ru", password: "vbif2222")) { (result: Result) in
             switch result {
             case .success(let object):
                 print(object)

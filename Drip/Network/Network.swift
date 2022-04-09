@@ -27,7 +27,8 @@ enum Result<T> {
 
 typealias JSONObject = [String: Any]
 
-func request<T: Decodable>(method: String, path: String, headers: Dictionary<String, String>, body: Data, objectType: T.Type, completion: @escaping (Result<T>) -> Void) {
+// TODO: added cookie
+func request<T: Codable>(method: String, path: String, headers: Dictionary<String, String>, body: Data?, objectType: T.Type, completion: @escaping (Result<T>) -> Void) {
     guard let url = URL(string: Constants.BackConstants.BackURL.rawValue + path) else {
         print("Error: cannot create URL")
         return
@@ -39,7 +40,9 @@ func request<T: Decodable>(method: String, path: String, headers: Dictionary<Str
     for (header, value) in headers {
         request.setValue(value, forHTTPHeaderField: header)
     }
-    request.httpBody = body
+    if body != nil {
+        request.httpBody = body
+    }
     URLSession.shared.dataTask(with: request) { data, response, error in
         guard error == nil else {
             print("request: error calling", method, path)
@@ -63,8 +66,15 @@ func request<T: Decodable>(method: String, path: String, headers: Dictionary<Str
             return
         }
         do {
-            let decodedObject = try JSONDecoder().decode(objectType.self, from: data)
-            completion(Result.success(decodedObject))
+            print(data)
+            let decodedResponse = try JSONDecoder().decode(Response<T>.self, from: data)
+            if decodedResponse.status == 200 {
+                completion(Result.success(decodedResponse.body))
+            } else {
+                print("request: invalid status response status")
+                completion(Result.failure(Constants.APPError.invalidStatusCode(response.statusCode)))
+                return
+            }
         } catch let error {
             completion(Result.failure(Constants.APPError.jsonParsingError(error as! DecodingError)))
             print("request: failed to convert JSON data to string")
@@ -79,7 +89,7 @@ func loginRequest(credentials: Credentials, completion: @escaping (Result<User>)
         return
     }
     
-    request(method: "POST", path: "session", headers: [:], body: jsonData, objectType: User.self) { (result: Result) in
+    request(method: "POST", path: "auth/session", headers: [:], body: jsonData, objectType: User.self) { (result: Result) in
         switch result {
         case .success(let object):
             completion(Result.success(object))
@@ -88,3 +98,102 @@ func loginRequest(credentials: Credentials, completion: @escaping (Result<User>)
         }
     }
 }
+
+func signupRequest(credentials: Credentials, completion: @escaping (Result<User>) -> Void) {
+    guard let jsonData = try? JSONEncoder().encode(credentials) else {
+        print("loginRequest: convert model to JSON data failed")
+        return
+    }
+    
+    request(method: "POST", path: "auth/profile", headers: [:], body: jsonData, objectType: User.self) { (result: Result) in
+        switch result {
+        case .success(let object):
+            completion(Result.success(object))
+        case .failure(let error):
+            completion(Result.failure(error))
+        }
+    }
+}
+
+func updateProfileRequest(userInfo: User, completion: @escaping (Result<User>) -> Void) {
+    guard let jsonData = try? JSONEncoder().encode(userInfo) else {
+        print("loginRequest: convert model to JSON data failed")
+        return
+    }
+    
+    request(method: "PUT", path: "profile", headers: [:], body: jsonData, objectType: User.self) { (result: Result) in
+        switch result {
+        case .success(let object):
+            completion(Result.success(object))
+        case .failure(let error):
+            completion(Result.failure(error))
+        }
+    }
+}
+
+func feedRequest(completion: @escaping (Result<Array<User>>) -> Void) {
+    request(method: "GET", path: "feed", headers: [:], body: nil, objectType: Array<User>.self) { (result: Result) in
+        switch result {
+        case .success(let object):
+            completion(Result.success(object))
+        case .failure(let error):
+            completion(Result.failure(error))
+        }
+    }
+}
+
+// TODO: what is in response body?
+func reactionRequest(reaction: Reaction, completion: @escaping (Result<Array<User>>) -> Void) {
+    guard let jsonData = try? JSONEncoder().encode(reaction) else {
+        print("loginRequest: convert model to JSON data failed")
+        return
+    }
+
+    request(method: "POST", path: "likes", headers: [:], body: jsonData, objectType: Array<User>.self) { (result: Result) in
+        switch result {
+        case .success(let object):
+            completion(Result.success(object))
+        case .failure(let error):
+            completion(Result.failure(error))
+        }
+    }
+}
+
+func matchesRequest(completion: @escaping (Result<Array<User>>) -> Void) {
+    request(method: "GET", path: "match", headers: [:], body: nil, objectType: Array<User>.self) { (result: Result) in
+        switch result {
+        case .success(let object):
+            completion(Result.success(object))
+        case .failure(let error):
+            completion(Result.failure(error))
+        }
+    }
+}
+
+func matchesRequest(search: Search, completion: @escaping (Result<Array<User>>) -> Void) {
+    guard let jsonData = try? JSONEncoder().encode(search) else {
+        print("loginRequest: convert model to JSON data failed")
+        return
+    }
+
+    request(method: "POST", path: "match", headers: [:], body: jsonData, objectType: Array<User>.self) { (result: Result) in
+        switch result {
+        case .success(let object):
+            completion(Result.success(object))
+        case .failure(let error):
+            completion(Result.failure(error))
+        }
+    }
+}
+
+// TODO: tag request 'GET' 'tags'
+
+// TODO: tag request 'POST' 'profile/photo'
+
+// TODO: tag request 'DELETE' 'profile/photo'
+
+// TODO: tag request 'GET' 'chats'
+
+// TODO: tag request 'GET' 'chat'
+
+// TODO: tag request 'POST' 'chat'
