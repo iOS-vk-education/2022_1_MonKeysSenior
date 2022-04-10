@@ -91,8 +91,7 @@ final class LoginViewController: UIViewController {
         emailPrompt
             .pin
             .below(of: emailTextField)
-            .width(50%)
-            .height(1%)
+            .sizeToFit()
             .hCenter()
             .marginTop(1%)
         
@@ -107,8 +106,7 @@ final class LoginViewController: UIViewController {
         passwordPrompt
             .pin
             .below(of: passwordTextField)
-            .width(50%)
-            .height(1%)
+            .sizeToFit()
             .hCenter()
             .marginTop(1%)
         

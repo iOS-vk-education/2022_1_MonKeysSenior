@@ -107,8 +107,7 @@ final class SignupViewController: UIViewController {
         emailPrompt
             .pin
             .below(of: emailTextField)
-            .width(50%)
-            .height(1%)
+            .sizeToFit()
             .hCenter()
             .marginTop(1%)
         
@@ -123,8 +122,7 @@ final class SignupViewController: UIViewController {
         passwordPrompt
             .pin
             .below(of: passwordTextField)
-            .width(50%)
-            .height(1%)
+            .sizeToFit()
             .hCenter()
             .marginTop(1%)
         
@@ -139,8 +137,7 @@ final class SignupViewController: UIViewController {
         repeatPasswordPrompt
             .pin
             .below(of: repeatPasswordTextField)
-            .width(50%)
-            .height(1%)
+            .sizeToFit()
             .hCenter()
             .marginTop(1%)
         
