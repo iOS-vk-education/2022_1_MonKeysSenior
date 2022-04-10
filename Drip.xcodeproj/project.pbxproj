@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E127EF828033B6C00D3AD60 /* PromptLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E127EF728033B6C00D3AD60 /* PromptLabel.swift */; };
 		1E8A74F92801EA59004D5566 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8A74F82801EA59004D5566 /* LoginController.swift */; };
 		1E8A74FB2801EA63004D5566 /* SignupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8A74FA2801EA63004D5566 /* SignupController.swift */; };
 		1E8A7500280230E1004D5566 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8A74FF280230E1004D5566 /* TextField.swift */; };
 		1E8A75022802348B004D5566 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8A75012802348B004D5566 /* Button.swift */; };
+		1E8A75052802D252004D5566 /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 1E8A75042802D252004D5566 /* PinLayout */; };
 		AA7C748427DDDA6100BA0A97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C748327DDDA6100BA0A97 /* AppDelegate.swift */; };
 		AA7C748D27DDDA6C00BA0A97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA7C748C27DDDA6C00BA0A97 /* Assets.xcassets */; };
 		AA7C749027DDDA6C00BA0A97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA7C748E27DDDA6C00BA0A97 /* LaunchScreen.storyboard */; };
@@ -22,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E127EF728033B6C00D3AD60 /* PromptLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptLabel.swift; sourceTree = "<group>"; };
 		1E8A74F82801EA59004D5566 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		1E8A74FA2801EA63004D5566 /* SignupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupController.swift; sourceTree = "<group>"; };
 		1E8A74FF280230E1004D5566 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
@@ -43,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E8A75052802D252004D5566 /* PinLayout in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +58,7 @@
 			children = (
 				1E8A74FF280230E1004D5566 /* TextField.swift */,
 				1E8A75012802348B004D5566 /* Button.swift */,
+				1E127EF728033B6C00D3AD60 /* PromptLabel.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -117,6 +122,9 @@
 			dependencies = (
 			);
 			name = Drip;
+			packageProductDependencies = (
+				1E8A75042802D252004D5566 /* PinLayout */,
+			);
 			productName = Drip;
 			productReference = AA7C748027DDDA6100BA0A97 /* Drip.app */;
 			productType = "com.apple.product-type.application";
@@ -145,6 +153,9 @@
 				Base,
 			);
 			mainGroup = AA7C747727DDDA6100BA0A97;
+			packageReferences = (
+				1E8A75032802D252004D5566 /* XCRemoteSwiftPackageReference "PinLayout" */,
+			);
 			productRefGroup = AA7C748127DDDA6100BA0A97 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -177,6 +188,7 @@
 				1E8A74FB2801EA63004D5566 /* SignupController.swift in Sources */,
 				AA7C748427DDDA6100BA0A97 /* AppDelegate.swift in Sources */,
 				1E8A75022802348B004D5566 /* Button.swift in Sources */,
+				1E127EF828033B6C00D3AD60 /* PromptLabel.swift in Sources */,
 				AA7C749D27DDE6CF00BA0A97 /* MatchListController.swift in Sources */,
 				1E8A7500280230E1004D5566 /* TextField.swift in Sources */,
 				AA7C749B27DDE6B600BA0A97 /* FeedController.swift in Sources */,
@@ -392,6 +404,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1E8A75032802D252004D5566 /* XCRemoteSwiftPackageReference "PinLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/layoutBox/PinLayout";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1E8A75042802D252004D5566 /* PinLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1E8A75032802D252004D5566 /* XCRemoteSwiftPackageReference "PinLayout" */;
+			productName = PinLayout;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AA7C747827DDDA6100BA0A97 /* Project object */;
 }

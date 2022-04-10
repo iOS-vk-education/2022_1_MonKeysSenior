@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PinLayout
 
 final class LoginViewController: UIViewController {
     let logo: UILabel = {
@@ -17,28 +18,42 @@ final class LoginViewController: UIViewController {
         return label
     }()
 
-    let emailTextField: UITextField = {
+    let emailTextField: TextField = {
         let tf = TextField()
         tf.setupDefault(placeholder: "Email", security: false)
         tf.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
+        tf.addTarget(self, action: #selector(handleEmailInput), for: .editingChanged)
         return tf
     }()
     
-    let passwordTextField: UITextField = {
+    let emailPrompt: PromptLabel = {
+        let prompt = PromptLabel()
+        prompt.setup(text: "Введите почту в формате drip@example.com")
+        return prompt
+    }()
+    
+    let passwordTextField: TextField = {
         let tf = TextField()
         tf.setupDefault(placeholder: "Password", security: true)
         tf.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
+        tf.addTarget(self, action: #selector(handlePasswordInput), for: .editingChanged)
         return tf
     }()
+    
+    let passwordPrompt: PromptLabel = {
+        let prompt = PromptLabel()
+        prompt.setup(text: "Пароль должен быть не короче 8 символов")
+        return prompt
+    }()
 
-    let loginButton: UIButton = {
+    let loginButton: Button = {
         let button = Button(type: .system)
         button.setupDefault(title: "Login", titleColor: .black, backgroundColor: .lightGray)
         button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         return button
     }()
     
-    let signupButton: UIButton = {
+    let signupButton: Button = {
         let button = Button(type: .system)
         button.setupDefault(title: "Signup", titleColor: .white, backgroundColor: .black)
         button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
@@ -48,16 +63,70 @@ final class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupBackground()
-        setupLogo()
-        setupTextFields()
+        view.addSubview(logo)
+        view.addSubview(emailTextField)
+        view.addSubview(emailPrompt)
+        view.addSubview(passwordTextField)
+        view.addSubview(passwordPrompt)
+        view.addSubview(loginButton)
+        view.addSubview(signupButton)
     }
     
-    func setupLogo() {
-        view.addSubview(logo)
-        logo.topAnchor.constraint(equalTo: view.topAnchor, constant: 40).isActive = true
-        logo.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 40).isActive = true
-        logo.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40).isActive = true
-        logo.heightAnchor.constraint(equalToConstant: 200).isActive = true
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        logo
+            .pin
+            .top(10%)
+            .hCenter()
+            .sizeToFit()
+        
+        emailTextField
+            .pin
+            .below(of: logo)
+            .width(50%)
+            .height(5%)
+            .hCenter()
+            .marginTop(10%)
+        
+        emailPrompt
+            .pin
+            .below(of: emailTextField)
+            .width(50%)
+            .height(1%)
+            .hCenter()
+            .marginTop(1%)
+        
+        passwordTextField
+            .pin
+            .below(of: emailPrompt)
+            .width(50%)
+            .height(5%)
+            .hCenter()
+            .marginTop(1%)
+        
+        passwordPrompt
+            .pin
+            .below(of: passwordTextField)
+            .width(50%)
+            .height(1%)
+            .hCenter()
+            .marginTop(1%)
+        
+        loginButton
+            .pin
+            .below(of: passwordPrompt)
+            .width(50%)
+            .height(5%)
+            .hCenter()
+            .marginTop(4%)
+        
+        signupButton
+            .pin
+            .below(of: loginButton)
+            .width(50%)
+            .height(5%)
+            .hCenter()
+            .marginTop(1%)
     }
 
     func setupBackground() {
@@ -78,21 +147,27 @@ final class LoginViewController: UIViewController {
         view.layer.addSublayer(layer0)
     }
 
-    func setupTextFields() {
-        let stackView = UIStackView(arrangedSubviews: [emailTextField, passwordTextField, loginButton, signupButton])
-        stackView.axis = .vertical
-        stackView.spacing = 20
-        stackView.distribution = .fillEqually
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        //add stack view as subview to main view with AutoLayout
-        view.addSubview(stackView)
-        stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 240).isActive = true
-        stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 40).isActive = true
-        stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40).isActive = true
-        stackView.heightAnchor.constraint(equalToConstant: 300).isActive = true
+    @objc
+    func handleEmailInput() {
+        emailPrompt.isPrompt()
+        let emailText = emailTextField.text!
+//        let regex = try! NSRegularExpression(pattern: #"^\S+@\S+\.\S+$"#, options: .caseInsensitive)
+        if emailText.isEmpty
+//            || regex.firstMatch(in: emailText, options: [], range: NSRange(location: 0, length: emailText.count)) != nil
+        {
+            emailPrompt.isError()
+        }
     }
-
+    
+    @objc
+    func handlePasswordInput() {
+        passwordPrompt.isPrompt()
+        let passwordText = passwordTextField.text!
+        if passwordText.count < 8 {
+            passwordPrompt.isError()
+        }
+    }
+    
     @objc
     func handleLogin() {
         validateForm()
@@ -103,9 +178,9 @@ final class LoginViewController: UIViewController {
         let emailText = emailTextField.text!
         let passwordText = passwordTextField.text!
 
-        let isFormFilled = !emailText.isEmpty && !passwordText.isEmpty
+        let isValide = !emailText.isEmpty && !passwordText.isEmpty
 
-        if isFormFilled {
+        if isValide {
             loginButton.backgroundColor = .white
             loginButton.isEnabled = true
         } else {
@@ -116,14 +191,20 @@ final class LoginViewController: UIViewController {
     }
 
     func validateForm() {
-        guard let emailText = emailTextField.text, !emailText.isEmpty else { return }
-        guard let passwordText = passwordTextField.text, !passwordText.isEmpty else { return }
+        guard let emailText = emailTextField.text, !emailText.isEmpty else {
+            emailPrompt.isError()
+            return
+        }
+        guard let passwordText = passwordTextField.text, !passwordText.isEmpty else {
+            passwordPrompt.isError()
+            return
+        }
 
         startLogin(email: emailText, password: passwordText)
     }
 
     func startLogin(email: String, password: String) {
-        print("Please call any Sign up api for registration: ", email, password)
+        print("Please call any Login api for login: ", email, password)
     }
 }
 

@@ -6,6 +6,11 @@ final class AppFactory {
         return login
     }
     
+    func buildSignupViewController() -> UIViewController {
+        let signup = SignupViewController()
+        return signup
+    }
+    
     func buildTabBarController() -> UITabBarController {
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [

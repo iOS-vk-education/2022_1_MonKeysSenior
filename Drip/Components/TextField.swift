@@ -31,6 +31,7 @@ class TextField: UITextField {
         self.textColor = .white
         self.isSecureTextEntry = security
         self.layer.cornerRadius = 12
+        self.font = UIFont.boldSystemFont(ofSize: 14)
         self.backgroundColor = UIColor(white: 0, alpha: 0.1)
     }
 }

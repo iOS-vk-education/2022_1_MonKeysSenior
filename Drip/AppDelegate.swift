@@ -8,6 +8,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
 //        let root = factory.buildTabBarController()
         let root = factory.buildLoginViewController()
+//        let root = factory.buildSignupViewController()
         window?.rootViewController = root
         window?.makeKeyAndVisible()
         return true
