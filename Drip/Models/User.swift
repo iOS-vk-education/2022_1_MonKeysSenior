@@ -10,7 +10,7 @@ import Foundation
 struct User: Codable {
     var id: UInt64
     var email: String
-    var password: String?
+    var password: String
     var gender: String
     var prefer: String
     var fromAge: Int
@@ -19,9 +19,9 @@ struct User: Codable {
     var age: Int
     var description: String
     var imgs: Array<String>
-    var tags: Array<String>?
-    var reportStatus: String?
-    var payment: Bool?
+    var tags: Array<String>
+    var reportStatus: String
+    var payment: Bool
     
     enum CodingKeys: String, CodingKey {
         case id

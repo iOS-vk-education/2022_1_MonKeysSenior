@@ -48,11 +48,20 @@ final class AppFactory {
             switch result {
             case .success(let object):
                 print(object)
+                
+                // example
+                getProfileRequest() { (result: Result) in
+                    switch result {
+                    case .success(let object):
+                        print(object)
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
             case .failure(let error):
                 print(error)
             }
         }
-
         return profile
     }
     

@@ -27,7 +27,6 @@ enum Result<T> {
 
 typealias JSONObject = [String: Any]
 
-// TODO: added cookie
 func request<T: Codable>(method: String, path: String, headers: Dictionary<String, String>, body: Data?, objectType: T.Type, completion: @escaping (Result<T>) -> Void) {
     guard let url = URL(string: Constants.BackConstants.BackURL.rawValue + path) else {
         print("Error: cannot create URL")
@@ -60,13 +59,28 @@ func request<T: Codable>(method: String, path: String, headers: Dictionary<Strin
             completion(Result.failure(Constants.APPError.responseCastError))
             return
         }
+        
+        if let fields = response.allHeaderFields as? [String:String] {
+            let cookies = HTTPCookie.cookies(withResponseHeaderFields: fields, for: url)
+            
+            if let cookie = cookies.first {
+                var cookieProperties: [HTTPCookiePropertyKey: Any] = [:]
+                cookieProperties[.name] = cookie.name
+                cookieProperties[.value] = cookie.value
+                cookieProperties[.domain] = cookie.domain
+                
+                if let myCookie = HTTPCookie(properties: cookieProperties) {
+                    HTTPCookieStorage.shared.setCookie(myCookie)
+                }
+            }
+        }
+        
         guard (200 ..< 299) ~= response.statusCode else {
             print("request: invalid status code")
             completion(Result.failure(Constants.APPError.invalidStatusCode(response.statusCode)))
             return
         }
         do {
-            print(data)
             let decodedResponse = try JSONDecoder().decode(Response<T>.self, from: data)
             if decodedResponse.status == 200 {
                 completion(Result.success(decodedResponse.body))
@@ -99,6 +113,17 @@ func loginRequest(credentials: Credentials, completion: @escaping (Result<User>)
     }
 }
 
+func logoutRequest(completion: @escaping (Result<User>) -> Void) {
+    request(method: "DELETE", path: "session", headers: [:], body: nil, objectType: User.self) { (result: Result) in
+        switch result {
+        case .success(let object):
+            completion(Result.success(object))
+        case .failure(let error):
+            completion(Result.failure(error))
+        }
+    }
+}
+
 func signupRequest(credentials: Credentials, completion: @escaping (Result<User>) -> Void) {
     guard let jsonData = try? JSONEncoder().encode(credentials) else {
         print("loginRequest: convert model to JSON data failed")
@@ -106,6 +131,17 @@ func signupRequest(credentials: Credentials, completion: @escaping (Result<User>
     }
     
     request(method: "POST", path: "auth/profile", headers: [:], body: jsonData, objectType: User.self) { (result: Result) in
+        switch result {
+        case .success(let object):
+            completion(Result.success(object))
+        case .failure(let error):
+            completion(Result.failure(error))
+        }
+    }
+}
+
+func getProfileRequest(completion: @escaping (Result<User>) -> Void) {
+    request(method: "GET", path: "auth/profile", headers: [:], body: nil, objectType: User.self) { (result: Result) in
         switch result {
         case .success(let object):
             completion(Result.success(object))
