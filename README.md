@@ -41,13 +41,17 @@
 
 [![Drip backend](https://img.shields.io/badge/drip_backend-github_link-magenta)](https://github.com/Mon-Keys/Drip)
 
-### ```POST``` /api/v1/session
+### ```POST``` /api/v1/auth/session
 
 Получение куки по логину и паролю. Авторизация.
 
 ### ```DELETE``` /api/v1/session
 
 Логаут и удаление сессии на беке.
+
+### ```POST``` /api/v1/auth/profile
+
+Регистрация пользователя.
 
 ### ```GET``` /api/v1/profile
 
