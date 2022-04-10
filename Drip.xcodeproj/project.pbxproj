@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E127EF828033B6C00D3AD60 /* PromptLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E127EF728033B6C00D3AD60 /* PromptLabel.swift */; };
+		1E8A74F92801EA59004D5566 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8A74F82801EA59004D5566 /* LoginController.swift */; };
+		1E8A74FB2801EA63004D5566 /* SignupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8A74FA2801EA63004D5566 /* SignupController.swift */; };
+		1E8A7500280230E1004D5566 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8A74FF280230E1004D5566 /* TextField.swift */; };
+		1E8A75022802348B004D5566 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8A75012802348B004D5566 /* Button.swift */; };
+		1E8A75052802D252004D5566 /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 1E8A75042802D252004D5566 /* PinLayout */; };
 		AA7C748427DDDA6100BA0A97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C748327DDDA6100BA0A97 /* AppDelegate.swift */; };
 		AA7C748D27DDDA6C00BA0A97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA7C748C27DDDA6C00BA0A97 /* Assets.xcassets */; };
 		AA7C749027DDDA6C00BA0A97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA7C748E27DDDA6C00BA0A97 /* LaunchScreen.storyboard */; };
@@ -24,6 +30,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E127EF728033B6C00D3AD60 /* PromptLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptLabel.swift; sourceTree = "<group>"; };
+		1E8A74F82801EA59004D5566 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		1E8A74FA2801EA63004D5566 /* SignupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupController.swift; sourceTree = "<group>"; };
+		1E8A74FF280230E1004D5566 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		1E8A75012802348B004D5566 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		AA7C748027DDDA6100BA0A97 /* Drip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA7C748327DDDA6100BA0A97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA7C748C27DDDA6C00BA0A97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -45,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E8A75052802D252004D5566 /* PinLayout in Frameworks */,
 				CC0CDBD32803252800B5B467 /* Kingfisher in Frameworks */,
 				CC0CDBD02802388A00B5B467 /* PinLayout in Frameworks */,
 			);
@@ -53,6 +65,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E8A74FE280230C4004D5566 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				1E8A74FF280230E1004D5566 /* TextField.swift */,
+				1E8A75012802348B004D5566 /* Button.swift */,
+				1E127EF728033B6C00D3AD60 /* PromptLabel.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		AA7C747727DDDA6100BA0A97 = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +94,7 @@
 		AA7C748227DDDA6100BA0A97 /* Drip */ = {
 			isa = PBXGroup;
 			children = (
+				1E8A74FE280230C4004D5566 /* Components */,
 				CC9968B227FCB3A1009C2BD0 /* Models */,
 				CC9968AB27FC9CC9009C2BD0 /* Components */,
 				AA7C749927DDE66F00BA0A97 /* Scenes */,
@@ -91,6 +114,8 @@
 				AA7C749C27DDE6CF00BA0A97 /* MatchListController.swift */,
 				AA7C749E27DDE6E200BA0A97 /* ChatListController.swift */,
 				AA7C74A027DDE6F200BA0A97 /* ProfileController.swift */,
+				1E8A74F82801EA59004D5566 /* LoginController.swift */,
+				1E8A74FA2801EA63004D5566 /* SignupController.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -138,6 +163,7 @@
 			);
 			name = Drip;
 			packageProductDependencies = (
+				1E8A75042802D252004D5566 /* PinLayout */,
 				CC0CDBCF2802388A00B5B467 /* PinLayout */,
 				CC0CDBD22803252800B5B467 /* Kingfisher */,
 			);
@@ -170,6 +196,7 @@
 			);
 			mainGroup = AA7C747727DDDA6100BA0A97;
 			packageReferences = (
+				1E8A75032802D252004D5566 /* XCRemoteSwiftPackageReference "PinLayout" */,
 				CC0CDBCE2802388A00B5B467 /* XCRemoteSwiftPackageReference "PinLayout" */,
 				CC0CDBD12803252700B5B467 /* XCRemoteSwiftPackageReference "KingFisher" */,
 			);
@@ -203,10 +230,15 @@
 				AA7C74A127DDE6F200BA0A97 /* ProfileController.swift in Sources */,
 				AA7C749827DDDF4800BA0A97 /* AppFactory.swift in Sources */,
 				AA7C749F27DDE6E200BA0A97 /* ChatListController.swift in Sources */,
+				1E8A74FB2801EA63004D5566 /* SignupController.swift in Sources */,
 				CC9968B427FCB3CE009C2BD0 /* Profile.swift in Sources */,
 				AA7C748427DDDA6100BA0A97 /* AppDelegate.swift in Sources */,
+				1E8A75022802348B004D5566 /* Button.swift in Sources */,
+				1E127EF828033B6C00D3AD60 /* PromptLabel.swift in Sources */,
 				AA7C749D27DDE6CF00BA0A97 /* MatchListController.swift in Sources */,
+				1E8A7500280230E1004D5566 /* TextField.swift in Sources */,
 				AA7C749B27DDE6B600BA0A97 /* FeedController.swift in Sources */,
+				1E8A74F92801EA59004D5566 /* LoginController.swift in Sources */,
 				CC9968AA27FC7ADA009C2BD0 /* FeedModel.swift in Sources */,
 				CC9968BA27FCB698009C2BD0 /* Card.swift in Sources */,
 			);
@@ -422,6 +454,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1E8A75032802D252004D5566 /* XCRemoteSwiftPackageReference "PinLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/layoutBox/PinLayout";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 		CC0CDBCE2802388A00B5B467 /* XCRemoteSwiftPackageReference "PinLayout" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/layoutBox/PinLayout";
@@ -441,6 +479,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1E8A75042802D252004D5566 /* PinLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1E8A75032802D252004D5566 /* XCRemoteSwiftPackageReference "PinLayout" */;
+			productName = PinLayout;
+		};
 		CC0CDBCF2802388A00B5B467 /* PinLayout */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CC0CDBCE2802388A00B5B467 /* XCRemoteSwiftPackageReference "PinLayout" */;
