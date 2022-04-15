@@ -21,6 +21,12 @@
 		AA7C749D27DDE6CF00BA0A97 /* MatchListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C749C27DDE6CF00BA0A97 /* MatchListController.swift */; };
 		AA7C749F27DDE6E200BA0A97 /* ChatListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C749E27DDE6E200BA0A97 /* ChatListController.swift */; };
 		AA7C74A127DDE6F200BA0A97 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C74A027DDE6F200BA0A97 /* ProfileController.swift */; };
+		CC0CDBD02802388A00B5B467 /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = CC0CDBCF2802388A00B5B467 /* PinLayout */; };
+		CC0CDBD32803252800B5B467 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CC0CDBD22803252800B5B467 /* Kingfisher */; };
+		CC9968AA27FC7ADA009C2BD0 /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9968A927FC7ADA009C2BD0 /* FeedModel.swift */; };
+		CC9968B127FCA89C009C2BD0 /* FeedVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9968B027FCA89C009C2BD0 /* FeedVIew.swift */; };
+		CC9968B427FCB3CE009C2BD0 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9968B327FCB3CE009C2BD0 /* Profile.swift */; };
+		CC9968BA27FCB698009C2BD0 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9968B927FCB698009C2BD0 /* Card.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +46,10 @@
 		AA7C749C27DDE6CF00BA0A97 /* MatchListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchListController.swift; sourceTree = "<group>"; };
 		AA7C749E27DDE6E200BA0A97 /* ChatListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListController.swift; sourceTree = "<group>"; };
 		AA7C74A027DDE6F200BA0A97 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		CC9968A927FC7ADA009C2BD0 /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
+		CC9968B027FCA89C009C2BD0 /* FeedVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedVIew.swift; sourceTree = "<group>"; };
+		CC9968B327FCB3CE009C2BD0 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		CC9968B927FCB698009C2BD0 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +57,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC0CDBD32803252800B5B467 /* Kingfisher in Frameworks */,
+				CC0CDBD02802388A00B5B467 /* PinLayout in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,8 +104,8 @@
 		AA7C748227DDDA6100BA0A97 /* Drip */ = {
 			isa = PBXGroup;
 			children = (
-				1E8BF67927FA044500B911AE /* Models */,
-				1E8BF67627F9FDE500B911AE /* Network */,
+				CC9968B227FCB3A1009C2BD0 /* Models */,
+				CC9968AB27FC9CC9009C2BD0 /* Components */,
 				AA7C749927DDE66F00BA0A97 /* Scenes */,
 				AA7C748327DDDA6100BA0A97 /* AppDelegate.swift */,
 				AA7C748C27DDDA6C00BA0A97 /* Assets.xcassets */,
@@ -107,12 +119,38 @@
 		AA7C749927DDE66F00BA0A97 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				AA7C749A27DDE6B600BA0A97 /* FeedController.swift */,
+				CC9968AF27FCA723009C2BD0 /* Feed */,
 				AA7C749C27DDE6CF00BA0A97 /* MatchListController.swift */,
 				AA7C749E27DDE6E200BA0A97 /* ChatListController.swift */,
 				AA7C74A027DDE6F200BA0A97 /* ProfileController.swift */,
 			);
 			path = Scenes;
+			sourceTree = "<group>";
+		};
+		CC9968AB27FC9CC9009C2BD0 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				CC9968B927FCB698009C2BD0 /* Card.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		CC9968AF27FCA723009C2BD0 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				CC9968A927FC7ADA009C2BD0 /* FeedModel.swift */,
+				AA7C749A27DDE6B600BA0A97 /* FeedController.swift */,
+				CC9968B027FCA89C009C2BD0 /* FeedVIew.swift */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		CC9968B227FCB3A1009C2BD0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CC9968B327FCB3CE009C2BD0 /* Profile.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,6 +169,10 @@
 			dependencies = (
 			);
 			name = Drip;
+			packageProductDependencies = (
+				CC0CDBCF2802388A00B5B467 /* PinLayout */,
+				CC0CDBD22803252800B5B467 /* Kingfisher */,
+			);
 			productName = Drip;
 			productReference = AA7C748027DDDA6100BA0A97 /* Drip.app */;
 			productType = "com.apple.product-type.application";
@@ -159,6 +201,10 @@
 				Base,
 			);
 			mainGroup = AA7C747727DDDA6100BA0A97;
+			packageReferences = (
+				CC0CDBCE2802388A00B5B467 /* XCRemoteSwiftPackageReference "PinLayout" */,
+				CC0CDBD12803252700B5B467 /* XCRemoteSwiftPackageReference "KingFisher" */,
+			);
 			productRefGroup = AA7C748127DDDA6100BA0A97 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -185,10 +231,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC9968B127FCA89C009C2BD0 /* FeedVIew.swift in Sources */,
 				AA7C74A127DDE6F200BA0A97 /* ProfileController.swift in Sources */,
 				AA7C749827DDDF4800BA0A97 /* AppFactory.swift in Sources */,
 				1E8BF67B27FA048E00B911AE /* Credentials.swift in Sources */,
 				AA7C749F27DDE6E200BA0A97 /* ChatListController.swift in Sources */,
+				CC9968B427FCB3CE009C2BD0 /* Profile.swift in Sources */,
 				AA7C748427DDDA6100BA0A97 /* AppDelegate.swift in Sources */,
 				1E8A74F32801E60F004D5566 /* Reaction.swift in Sources */,
 				1E8BF67D27FA04D200B911AE /* User.swift in Sources */,
@@ -197,6 +245,8 @@
 				1E8A74F52801E7BD004D5566 /* Search.swift in Sources */,
 				1E8BF67827F9FEAE00B911AE /* Network.swift in Sources */,
 				AA7C749B27DDE6B600BA0A97 /* FeedController.swift in Sources */,
+				CC9968AA27FC7ADA009C2BD0 /* FeedModel.swift in Sources */,
+				CC9968BA27FCB698009C2BD0 /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,6 +458,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CC0CDBCE2802388A00B5B467 /* XCRemoteSwiftPackageReference "PinLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/layoutBox/PinLayout";
+			requirement = {
+				kind = exactVersion;
+				version = 1.9.4;
+			};
+		};
+		CC0CDBD12803252700B5B467 /* XCRemoteSwiftPackageReference "KingFisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/KingFisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CC0CDBCF2802388A00B5B467 /* PinLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CC0CDBCE2802388A00B5B467 /* XCRemoteSwiftPackageReference "PinLayout" */;
+			productName = PinLayout;
+		};
+		CC0CDBD22803252800B5B467 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CC0CDBD12803252700B5B467 /* XCRemoteSwiftPackageReference "KingFisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AA7C747827DDDA6100BA0A97 /* Project object */;
 }
