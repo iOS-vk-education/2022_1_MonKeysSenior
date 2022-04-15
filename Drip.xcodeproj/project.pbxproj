@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E8A74EF2801D63F004D5566 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8A74EE2801D63F004D5566 /* Response.swift */; };
+		1E8A74F32801E60F004D5566 /* Reaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8A74F22801E60F004D5566 /* Reaction.swift */; };
+		1E8A74F52801E7BD004D5566 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8A74F42801E7BD004D5566 /* Search.swift */; };
+		1E8BF67827F9FEAE00B911AE /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8BF67727F9FEAE00B911AE /* Network.swift */; };
+		1E8BF67B27FA048E00B911AE /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8BF67A27FA048E00B911AE /* Credentials.swift */; };
+		1E8BF67D27FA04D200B911AE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8BF67C27FA04D200B911AE /* User.swift */; };
 		AA7C748427DDDA6100BA0A97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C748327DDDA6100BA0A97 /* AppDelegate.swift */; };
 		AA7C748D27DDDA6C00BA0A97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA7C748C27DDDA6C00BA0A97 /* Assets.xcassets */; };
 		AA7C749027DDDA6C00BA0A97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA7C748E27DDDA6C00BA0A97 /* LaunchScreen.storyboard */; };
@@ -24,6 +30,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E8A74EE2801D63F004D5566 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		1E8A74F22801E60F004D5566 /* Reaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reaction.swift; sourceTree = "<group>"; };
+		1E8A74F42801E7BD004D5566 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		1E8BF67727F9FEAE00B911AE /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		1E8BF67A27FA048E00B911AE /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
+		1E8BF67C27FA04D200B911AE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AA7C748027DDDA6100BA0A97 /* Drip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA7C748327DDDA6100BA0A97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA7C748C27DDDA6C00BA0A97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,6 +65,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E8BF67627F9FDE500B911AE /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				1E8BF67727F9FEAE00B911AE /* Network.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		1E8BF67927FA044500B911AE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1E8BF67A27FA048E00B911AE /* Credentials.swift */,
+				1E8BF67C27FA04D200B911AE /* User.swift */,
+				1E8A74EE2801D63F004D5566 /* Response.swift */,
+				1E8A74F22801E60F004D5566 /* Reaction.swift */,
+				1E8A74F42801E7BD004D5566 /* Search.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		AA7C747727DDDA6100BA0A97 = {
 			isa = PBXGroup;
 			children = (
@@ -202,10 +234,16 @@
 				CC9968B127FCA89C009C2BD0 /* FeedVIew.swift in Sources */,
 				AA7C74A127DDE6F200BA0A97 /* ProfileController.swift in Sources */,
 				AA7C749827DDDF4800BA0A97 /* AppFactory.swift in Sources */,
+				1E8BF67B27FA048E00B911AE /* Credentials.swift in Sources */,
 				AA7C749F27DDE6E200BA0A97 /* ChatListController.swift in Sources */,
 				CC9968B427FCB3CE009C2BD0 /* Profile.swift in Sources */,
 				AA7C748427DDDA6100BA0A97 /* AppDelegate.swift in Sources */,
+				1E8A74F32801E60F004D5566 /* Reaction.swift in Sources */,
+				1E8BF67D27FA04D200B911AE /* User.swift in Sources */,
 				AA7C749D27DDE6CF00BA0A97 /* MatchListController.swift in Sources */,
+				1E8A74EF2801D63F004D5566 /* Response.swift in Sources */,
+				1E8A74F52801E7BD004D5566 /* Search.swift in Sources */,
+				1E8BF67827F9FEAE00B911AE /* Network.swift in Sources */,
 				AA7C749B27DDE6B600BA0A97 /* FeedController.swift in Sources */,
 				CC9968AA27FC7ADA009C2BD0 /* FeedModel.swift in Sources */,
 				CC9968BA27FCB698009C2BD0 /* Card.swift in Sources */,
