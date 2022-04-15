@@ -17,7 +17,15 @@ final class AppFactory {
         tabBarController.tabBar.tintColor = .white
         return tabBarController
     }
+    func buildLoginViewController() -> UIViewController {
+        let login = LoginViewController()
+        return login
+    }
     
+    func buildSignupViewController() -> UIViewController {
+        let signup = SignupViewController()
+        return signup
+    }
     private func buildFeedViewController() -> UIViewController {
         let feed = FeedViewController()
         let feedItem = UITabBarItem(title: "", image: UIImage(named: "feedIcon"), selectedImage: nil)
