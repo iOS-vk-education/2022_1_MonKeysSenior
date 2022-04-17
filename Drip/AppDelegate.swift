@@ -23,8 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        layer0.position = window!.center
         window?.layer.addSublayer(layer0)
         print(layer0.bounds)
-//        let root = factory.buildTabBarController()
-        let root = factory.buildLoginViewController();
+        let root = factory.buildTabBarController()
+//        let root = factory.buildLoginViewController();
         window?.rootViewController = root
         window?.makeKeyAndVisible()
         return true

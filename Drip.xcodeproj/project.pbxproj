@@ -31,16 +31,21 @@
 		CC9A0B782809CB8A0033DE00 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9A0B732809CB8A0033DE00 /* Response.swift */; };
 		CC9A0B792809CB8A0033DE00 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9A0B742809CB8A0033DE00 /* Search.swift */; };
 		CC9A0B7A2809CB8A0033DE00 /* Reaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9A0B752809CB8A0033DE00 /* Reaction.swift */; };
-		CC9A0B7B2809CB8A0033DE00 /* RegInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9A0B762809CB8A0033DE00 /* RegInfo.swift */; };
 		CC9A0B7C2809CB8A0033DE00 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9A0B772809CB8A0033DE00 /* User.swift */; };
 		CC9A0B7F2809CBC70033DE00 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9A0B7E2809CBC70033DE00 /* Network.swift */; };
 		CC9A0B832809CF580033DE00 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9A0B822809CF580033DE00 /* Button.swift */; };
 		CC9A0B882809CF630033DE00 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9A0B842809CF620033DE00 /* TextField.swift */; };
 		CC9A0B892809CF630033DE00 /* PromptLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9A0B852809CF630033DE00 /* PromptLabel.swift */; };
-		CC9A0B8A2809CF630033DE00 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9A0B862809CF630033DE00 /* CardViewController.swift */; };
-		CC9A0B8B2809CF630033DE00 /* CardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC9A0B872809CF630033DE00 /* CardViewController.xib */; };
 		CC9A0B8D2809CF890033DE00 /* SignupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9A0B8C2809CF890033DE00 /* SignupController.swift */; };
 		CC9A0B912809CFB20033DE00 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9A0B902809CFB20033DE00 /* LoginController.swift */; };
+		CCFC83B2280C50F700DC802B /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFC83AB280C50F700DC802B /* Response.swift */; };
+		CCFC83B3280C50F700DC802B /* Reaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFC83AC280C50F700DC802B /* Reaction.swift */; };
+		CCFC83B4280C50F700DC802B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFC83AD280C50F700DC802B /* User.swift */; };
+		CCFC83B5280C50F700DC802B /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFC83AE280C50F700DC802B /* Profile.swift */; };
+		CCFC83B6280C50F700DC802B /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFC83AF280C50F700DC802B /* Credentials.swift */; };
+		CCFC83B7280C50F700DC802B /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFC83B0280C50F700DC802B /* Search.swift */; };
+		CCFC83B8280C50F700DC802B /* RegInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFC83B1280C50F700DC802B /* RegInfo.swift */; };
+		CCFC83BA280C512B00DC802B /* RegInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFC83B9280C512B00DC802B /* RegInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,16 +73,21 @@
 		CC9A0B732809CB8A0033DE00 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		CC9A0B742809CB8A0033DE00 /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		CC9A0B752809CB8A0033DE00 /* Reaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reaction.swift; sourceTree = "<group>"; };
-		CC9A0B762809CB8A0033DE00 /* RegInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegInfo.swift; sourceTree = "<group>"; };
 		CC9A0B772809CB8A0033DE00 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CC9A0B7E2809CBC70033DE00 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		CC9A0B822809CF580033DE00 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		CC9A0B842809CF620033DE00 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		CC9A0B852809CF630033DE00 /* PromptLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromptLabel.swift; sourceTree = "<group>"; };
-		CC9A0B862809CF630033DE00 /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardViewController.swift; path = "../../../../Downloads/2022_1_MonKeysSenior-login-signup/Drip/Components/CardViewController.swift"; sourceTree = "<group>"; };
-		CC9A0B872809CF630033DE00 /* CardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CardViewController.xib; path = "../../../../Downloads/2022_1_MonKeysSenior-login-signup/Drip/Components/CardViewController.xib"; sourceTree = "<group>"; };
 		CC9A0B8C2809CF890033DE00 /* SignupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupController.swift; sourceTree = "<group>"; };
 		CC9A0B902809CFB20033DE00 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		CCFC83AB280C50F700DC802B /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		CCFC83AC280C50F700DC802B /* Reaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reaction.swift; sourceTree = "<group>"; };
+		CCFC83AD280C50F700DC802B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CCFC83AE280C50F700DC802B /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		CCFC83AF280C50F700DC802B /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
+		CCFC83B0280C50F700DC802B /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		CCFC83B1280C50F700DC802B /* RegInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegInfo.swift; sourceTree = "<group>"; };
+		CCFC83B9280C512B00DC802B /* RegInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,8 +153,6 @@
 			isa = PBXGroup;
 			children = (
 				CC9A0B822809CF580033DE00 /* Button.swift */,
-				CC9A0B862809CF630033DE00 /* CardViewController.swift */,
-				CC9A0B872809CF630033DE00 /* CardViewController.xib */,
 				CC9A0B852809CF630033DE00 /* PromptLabel.swift */,
 				CC9A0B842809CF620033DE00 /* TextField.swift */,
 				CC9968B927FCB698009C2BD0 /* Card.swift */,
@@ -165,7 +173,14 @@
 		CC9968B227FCB3A1009C2BD0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				CC9A0B762809CB8A0033DE00 /* RegInfo.swift */,
+				CCFC83AF280C50F700DC802B /* Credentials.swift */,
+				CCFC83AE280C50F700DC802B /* Profile.swift */,
+				CCFC83AC280C50F700DC802B /* Reaction.swift */,
+				CCFC83B1280C50F700DC802B /* RegInfo.swift */,
+				CCFC83B9280C512B00DC802B /* RegInfo.swift */,
+				CCFC83AB280C50F700DC802B /* Response.swift */,
+				CCFC83B0280C50F700DC802B /* Search.swift */,
+				CCFC83AD280C50F700DC802B /* User.swift */,
 				CC9968B327FCB3CE009C2BD0 /* Profile.swift */,
 			);
 			path = Models;
@@ -265,7 +280,6 @@
 			files = (
 				AA7C749027DDDA6C00BA0A97 /* LaunchScreen.storyboard in Resources */,
 				AA7C748D27DDDA6C00BA0A97 /* Assets.xcassets in Resources */,
-				CC9A0B8B2809CF630033DE00 /* CardViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,13 +293,15 @@
 				CC9968B127FCA89C009C2BD0 /* FeedVIew.swift in Sources */,
 				AA7C74A127DDE6F200BA0A97 /* ProfileController.swift in Sources */,
 				AA7C749827DDDF4800BA0A97 /* AppFactory.swift in Sources */,
+				CCFC83B6280C50F700DC802B /* Credentials.swift in Sources */,
 				1E8BF67B27FA048E00B911AE /* Credentials.swift in Sources */,
-				CC9A0B7B2809CB8A0033DE00 /* RegInfo.swift in Sources */,
-				CC9A0B8A2809CF630033DE00 /* CardViewController.swift in Sources */,
+				CCFC83B4280C50F700DC802B /* User.swift in Sources */,
 				CC9A0B782809CB8A0033DE00 /* Response.swift in Sources */,
 				AA7C749F27DDE6E200BA0A97 /* ChatListController.swift in Sources */,
 				CC9A0B7A2809CB8A0033DE00 /* Reaction.swift in Sources */,
 				CC9968B427FCB3CE009C2BD0 /* Profile.swift in Sources */,
+				CCFC83B8280C50F700DC802B /* RegInfo.swift in Sources */,
+				CCFC83BA280C512B00DC802B /* RegInfo.swift in Sources */,
 				AA7C748427DDDA6100BA0A97 /* AppDelegate.swift in Sources */,
 				CC9A0B7C2809CB8A0033DE00 /* User.swift in Sources */,
 				1E8A74F32801E60F004D5566 /* Reaction.swift in Sources */,
@@ -293,12 +309,16 @@
 				1E8BF67D27FA04D200B911AE /* User.swift in Sources */,
 				AA7C749D27DDE6CF00BA0A97 /* MatchListController.swift in Sources */,
 				CC9A0B722809CB810033DE00 /* Credentials.swift in Sources */,
+				CCFC83B3280C50F700DC802B /* Reaction.swift in Sources */,
 				CC9A0B792809CB8A0033DE00 /* Search.swift in Sources */,
 				1E8A74EF2801D63F004D5566 /* Response.swift in Sources */,
+				CCFC83B7280C50F700DC802B /* Search.swift in Sources */,
 				CC9A0B912809CFB20033DE00 /* LoginController.swift in Sources */,
+				CCFC83B2280C50F700DC802B /* Response.swift in Sources */,
 				1E8A74F52801E7BD004D5566 /* Search.swift in Sources */,
 				CC9A0B882809CF630033DE00 /* TextField.swift in Sources */,
 				1E8BF67827F9FEAE00B911AE /* Network.swift in Sources */,
+				CCFC83B5280C50F700DC802B /* Profile.swift in Sources */,
 				CC9A0B832809CF580033DE00 /* Button.swift in Sources */,
 				CC9A0B8D2809CF890033DE00 /* SignupController.swift in Sources */,
 				AA7C749B27DDE6B600BA0A97 /* FeedController.swift in Sources */,
