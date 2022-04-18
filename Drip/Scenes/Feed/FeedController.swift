@@ -3,32 +3,36 @@ import UIKit
 
 final class FeedViewController: UIViewController {
     private let model = FeedModel()
-    private var lastCard = CardView()
+//    private var lastCard = CardView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        lastCard.layer.cornerRadius = 12;
-        lastCard.delegate = self
-        lastCard.dataSource = self
+//        lastCard.layer.cornerRadius = 12;
+//        lastCard.delegate = self
+//        lastCard.dataSource = self
 //        feedView.superview = self
         
         
         view.frame = CGRect(x:0, y:0 ,width: view.frame.width, height: view.frame.height)
-        view.addSubview(lastCard)
-        
-        
-        lastCard.frame = CGRect(x: 12, y:64, width: view.frame.width-24, height: view.frame.height*0.7)
-        
-        lastCard.hardSizeWidth = view.frame.width-24
-        lastCard.hardSizeHeight = view.frame.height*0.7
-        lastCard.layoutIfNeeded()
+//        view.addSubview(lastCard)
+//
+//
+//        lastCard.frame = CGRect(x: 12, y:64, width: view.frame.width-24, height: view.frame.height*0.9)
+//
+//        lastCard.hardSizeWidth = view.frame.width-24
+//        lastCard.hardSizeHeight = view.frame.height*0.9
+//        lastCard.layoutIfNeeded()
+        addCardToStack()
     }
+    
+    
     
     private func addCardToStack() -> Void {
         let card = CardView()
-        card.frame = CGRect(x: 24,  y:64, width: view.frame.width-48, height: view.frame.height*0.9)
-        card.hardSizeWidth = view.frame.width-48
-        card.hardSizeHeight = view.frame.height * 0.9
+//        print(view)
+        card.frame = CGRect(x: 12,  y:64, width: UIScreen.main.bounds.width-24, height: UIScreen.main.bounds.height*0.8)
+        card.hardSizeWidth = UIScreen.main.bounds.width-24
+        card.hardSizeHeight = UIScreen.main.bounds.height * 0.8
         card.delegate = self
         card.dataSource = self
         
@@ -71,7 +75,7 @@ extension FeedViewController: CardViewDelegate {
     func likedCurrent() {
         print("liked")
         if (self.model.next()){
-            addCardToStack()
+            self.addCardToStack()
         } else {
             outOfCards()
         }
@@ -82,7 +86,7 @@ extension FeedViewController: CardViewDelegate {
     func dislikedCurrent() {
         print("disliked")
         if (self.model.next()){
-            addCardToStack()
+            self.addCardToStack()
         } else {
             outOfCards()
         }
