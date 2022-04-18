@@ -6,10 +6,10 @@ final class AppFactory {
         tabBarController.viewControllers = [
             buildFeedViewController(),
             buildMatchListViewController(),
-            buildChatListViewController(),
+            UINavigationController(rootViewController: buildChatListViewController()),
             buildProfileViewController()
         ]
-        tabBarController.selectedIndex = 0
+        tabBarController.selectedIndex = 2
         tabBarController.tabBar.isTranslucent = false
         tabBarController.tabBar.backgroundColor = .white
         tabBarController.tabBar.unselectedItemTintColor = .gray

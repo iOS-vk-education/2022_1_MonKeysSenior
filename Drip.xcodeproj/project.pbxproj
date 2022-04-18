@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA1FF2E4280BB01700CBEDAF /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1FF2E3280BB01700CBEDAF /* ChatViewController.swift */; };
 		AA7C748427DDDA6100BA0A97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C748327DDDA6100BA0A97 /* AppDelegate.swift */; };
 		AA7C748D27DDDA6C00BA0A97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA7C748C27DDDA6C00BA0A97 /* Assets.xcassets */; };
 		AA7C749027DDDA6C00BA0A97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA7C748E27DDDA6C00BA0A97 /* LaunchScreen.storyboard */; };
@@ -15,9 +16,15 @@
 		AA7C749D27DDE6CF00BA0A97 /* MatchListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C749C27DDE6CF00BA0A97 /* MatchListController.swift */; };
 		AA7C749F27DDE6E200BA0A97 /* ChatListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C749E27DDE6E200BA0A97 /* ChatListController.swift */; };
 		AA7C74A127DDE6F200BA0A97 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C74A027DDE6F200BA0A97 /* ProfileController.swift */; };
+		AABBE21228027C8B00D5556E /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = AABBE21128027C8B00D5556E /* PinLayout */; };
+		AABBE23528031B8B00D5556E /* MatchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABBE23428031B8A00D5556E /* MatchCollectionViewCell.swift */; };
+		AABBE23828031BB700D5556E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = AABBE23728031BB700D5556E /* Kingfisher */; };
+		AABF60A92809EBB100D08900 /* ChatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABF60A82809EBB100D08900 /* ChatCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA1FF2E3280BB01700CBEDAF /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		AA1FF2E5280C0AA800CBEDAF /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		AA7C748027DDDA6100BA0A97 /* Drip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA7C748327DDDA6100BA0A97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA7C748C27DDDA6C00BA0A97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -28,6 +35,8 @@
 		AA7C749C27DDE6CF00BA0A97 /* MatchListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchListController.swift; sourceTree = "<group>"; };
 		AA7C749E27DDE6E200BA0A97 /* ChatListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListController.swift; sourceTree = "<group>"; };
 		AA7C74A027DDE6F200BA0A97 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		AABBE23428031B8A00D5556E /* MatchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchCollectionViewCell.swift; sourceTree = "<group>"; };
+		AABF60A82809EBB100D08900 /* ChatCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +44,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AABBE23828031BB700D5556E /* Kingfisher in Frameworks */,
+				AABBE21228027C8B00D5556E /* PinLayout in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +88,9 @@
 				AA7C749C27DDE6CF00BA0A97 /* MatchListController.swift */,
 				AA7C749E27DDE6E200BA0A97 /* ChatListController.swift */,
 				AA7C74A027DDE6F200BA0A97 /* ProfileController.swift */,
+				AABBE23428031B8A00D5556E /* MatchCollectionViewCell.swift */,
+				AABF60A82809EBB100D08900 /* ChatCollectionViewCell.swift */,
+				AA1FF2E3280BB01700CBEDAF /* ChatViewController.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -97,6 +111,10 @@
 			dependencies = (
 			);
 			name = Drip;
+			packageProductDependencies = (
+				AABBE21128027C8B00D5556E /* PinLayout */,
+				AABBE23728031BB700D5556E /* Kingfisher */,
+			);
 			productName = Drip;
 			productReference = AA7C748027DDDA6100BA0A97 /* Drip.app */;
 			productType = "com.apple.product-type.application";
@@ -123,8 +141,13 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = AA7C747727DDDA6100BA0A97;
+			packageReferences = (
+				AABBE21028027C8B00D5556E /* XCRemoteSwiftPackageReference "PinLayout" */,
+				AABBE23628031BB700D5556E /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = AA7C748127DDDA6100BA0A97 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -156,6 +179,9 @@
 				AA7C749F27DDE6E200BA0A97 /* ChatListController.swift in Sources */,
 				AA7C748427DDDA6100BA0A97 /* AppDelegate.swift in Sources */,
 				AA7C749D27DDE6CF00BA0A97 /* MatchListController.swift in Sources */,
+				AABBE23528031B8B00D5556E /* MatchCollectionViewCell.swift in Sources */,
+				AABF60A92809EBB100D08900 /* ChatCollectionViewCell.swift in Sources */,
+				AA1FF2E4280BB01700CBEDAF /* ChatViewController.swift in Sources */,
 				AA7C749B27DDE6B600BA0A97 /* FeedController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -167,6 +193,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				AA7C748F27DDDA6C00BA0A97 /* Base */,
+				AA1FF2E5280C0AA800CBEDAF /* ru */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -178,6 +205,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -225,7 +253,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -239,6 +267,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -280,7 +309,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -297,7 +326,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CMTDC8RT45;
+				DEVELOPMENT_TEAM = FT7JYBR8Z6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Drip/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -325,7 +354,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CMTDC8RT45;
+				DEVELOPMENT_TEAM = FT7JYBR8Z6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Drip/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -356,7 +385,7 @@
 				AA7C749327DDDA6C00BA0A97 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		AA7C749427DDDA6C00BA0A97 /* Build configuration list for PBXNativeTarget "Drip" */ = {
 			isa = XCConfigurationList;
@@ -365,9 +394,41 @@
 				AA7C749627DDDA6C00BA0A97 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AABBE21028027C8B00D5556E /* XCRemoteSwiftPackageReference "PinLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/layoutBox/PinLayout";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		AABBE23628031BB700D5556E /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AABBE21128027C8B00D5556E /* PinLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AABBE21028027C8B00D5556E /* XCRemoteSwiftPackageReference "PinLayout" */;
+			productName = PinLayout;
+		};
+		AABBE23728031BB700D5556E /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AABBE23628031BB700D5556E /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AA7C747827DDDA6100BA0A97 /* Project object */;
 }
