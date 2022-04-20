@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1E5C0203280C52DA00F6D69B /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5C0202280C52DA00F6D69B /* Network.swift */; };
+		7F37F933280EA8D100CF2356 /* ProfileFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F37F932280EA8D100CF2356 /* ProfileFormController.swift */; };
 		AA7C748427DDDA6100BA0A97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C748327DDDA6100BA0A97 /* AppDelegate.swift */; };
 		AA7C748D27DDDA6C00BA0A97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA7C748C27DDDA6C00BA0A97 /* Assets.xcassets */; };
 		AA7C749027DDDA6C00BA0A97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA7C748E27DDDA6C00BA0A97 /* LaunchScreen.storyboard */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		1E5C0202280C52DA00F6D69B /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		7F37F932280EA8D100CF2356 /* ProfileFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFormController.swift; sourceTree = "<group>"; };
 		AA7C748027DDDA6100BA0A97 /* Drip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA7C748327DDDA6100BA0A97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA7C748C27DDDA6C00BA0A97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -89,6 +91,14 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		7F37F931280EA8AB00CF2356 /* ProfileForm */ = {
+			isa = PBXGroup;
+			children = (
+				7F37F932280EA8D100CF2356 /* ProfileFormController.swift */,
+			);
+			path = ProfileForm;
+			sourceTree = "<group>";
+		};
 		AA7C747727DDDA6100BA0A97 = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +134,7 @@
 		AA7C749927DDE66F00BA0A97 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				7F37F931280EA8AB00CF2356 /* ProfileForm */,
 				CC9968AF27FCA723009C2BD0 /* Feed */,
 				AA7C749C27DDE6CF00BA0A97 /* MatchListController.swift */,
 				AA7C749E27DDE6E200BA0A97 /* ChatListController.swift */,
@@ -256,6 +267,7 @@
 				CCFC83B4280C50F700DC802B /* User.swift in Sources */,
 				AA7C749F27DDE6E200BA0A97 /* ChatListController.swift in Sources */,
 				CC9968B427FCB3CE009C2BD0 /* Profile.swift in Sources */,
+				7F37F933280EA8D100CF2356 /* ProfileFormController.swift in Sources */,
 				CCFC83B8280C50F700DC802B /* RegInfo.swift in Sources */,
 				CCFC83BA280C512B00DC802B /* RegInfo.swift in Sources */,
 				AA7C748427DDDA6100BA0A97 /* AppDelegate.swift in Sources */,
@@ -413,7 +425,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CMTDC8RT45;
+				DEVELOPMENT_TEAM = 7BP56Q7F8N;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Drip/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -426,7 +438,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Drip.monkeys;
+				PRODUCT_BUNDLE_IDENTIFIER = com.drip.mokeys;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
