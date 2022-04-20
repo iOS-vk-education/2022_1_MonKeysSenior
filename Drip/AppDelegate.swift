@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.layer.addSublayer(layer0)
         
         let rootViewController = factory.buildTabBarController()
-//        let navigationController = UINavigationController(rootViewController: rootViewController)
+        
         window?.rootViewController = rootViewController
         window?.makeKeyAndVisible()
         return true

@@ -8,11 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		AA1FF2E4280BB01700CBEDAF /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1FF2E3280BB01700CBEDAF /* ChatViewController.swift */; };
+		AA586A012810158300E0F777 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA586A002810158300E0F777 /* Network.swift */; };
+		AA586A04281015B300E0F777 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA586A03281015B300E0F777 /* Credentials.swift */; };
+		AA586A08281015C600E0F777 /* Reaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA586A07281015C600E0F777 /* Reaction.swift */; };
+		AA586A0A281015D400E0F777 /* RegInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA586A09281015D400E0F777 /* RegInfo.swift */; };
+		AA586A0C281015F400E0F777 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA586A0B281015F400E0F777 /* Response.swift */; };
+		AA586A0E281015FC00E0F777 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA586A0D281015FC00E0F777 /* Search.swift */; };
+		AA586A102810160500E0F777 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA586A0F2810160500E0F777 /* User.swift */; };
+		AA586A122810161900E0F777 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA586A112810161900E0F777 /* Profile.swift */; };
+		AA586A15281016D800E0F777 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA586A14281016D800E0F777 /* Button.swift */; };
+		AA586A17281016E200E0F777 /* PromptLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA586A16281016E200E0F777 /* PromptLabel.swift */; };
+		AA586A19281016EC00E0F777 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA586A18281016EC00E0F777 /* TextField.swift */; };
+		AA586A1B281016F600E0F777 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA586A1A281016F600E0F777 /* Card.swift */; };
+		AA586A1E2810174500E0F777 /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA586A1D2810174500E0F777 /* FeedModel.swift */; };
+		AA586A202810174F00E0F777 /* FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA586A1F2810174F00E0F777 /* FeedController.swift */; };
+		AA586A222810175B00E0F777 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA586A212810175B00E0F777 /* FeedView.swift */; };
+		AA586A272810184200E0F777 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA586A262810184200E0F777 /* LoginController.swift */; };
+		AA586A292810184E00E0F777 /* SignupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA586A282810184E00E0F777 /* SignupController.swift */; };
 		AA7C748427DDDA6100BA0A97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C748327DDDA6100BA0A97 /* AppDelegate.swift */; };
 		AA7C748D27DDDA6C00BA0A97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA7C748C27DDDA6C00BA0A97 /* Assets.xcassets */; };
 		AA7C749027DDDA6C00BA0A97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA7C748E27DDDA6C00BA0A97 /* LaunchScreen.storyboard */; };
 		AA7C749827DDDF4800BA0A97 /* AppFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C749727DDDF4800BA0A97 /* AppFactory.swift */; };
-		AA7C749B27DDE6B600BA0A97 /* FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C749A27DDE6B600BA0A97 /* FeedController.swift */; };
 		AA7C749D27DDE6CF00BA0A97 /* MatchListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C749C27DDE6CF00BA0A97 /* MatchListController.swift */; };
 		AA7C749F27DDE6E200BA0A97 /* ChatListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C749E27DDE6E200BA0A97 /* ChatListController.swift */; };
 		AA7C74A127DDE6F200BA0A97 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C74A027DDE6F200BA0A97 /* ProfileController.swift */; };
@@ -25,13 +41,29 @@
 /* Begin PBXFileReference section */
 		AA1FF2E3280BB01700CBEDAF /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		AA1FF2E5280C0AA800CBEDAF /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		AA586A002810158300E0F777 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		AA586A03281015B300E0F777 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
+		AA586A07281015C600E0F777 /* Reaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reaction.swift; sourceTree = "<group>"; };
+		AA586A09281015D400E0F777 /* RegInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegInfo.swift; sourceTree = "<group>"; };
+		AA586A0B281015F400E0F777 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		AA586A0D281015FC00E0F777 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		AA586A0F2810160500E0F777 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		AA586A112810161900E0F777 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		AA586A14281016D800E0F777 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		AA586A16281016E200E0F777 /* PromptLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptLabel.swift; sourceTree = "<group>"; };
+		AA586A18281016EC00E0F777 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		AA586A1A281016F600E0F777 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		AA586A1D2810174500E0F777 /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
+		AA586A1F2810174F00E0F777 /* FeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedController.swift; sourceTree = "<group>"; };
+		AA586A212810175B00E0F777 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
+		AA586A262810184200E0F777 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		AA586A282810184E00E0F777 /* SignupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupController.swift; sourceTree = "<group>"; };
 		AA7C748027DDDA6100BA0A97 /* Drip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA7C748327DDDA6100BA0A97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA7C748C27DDDA6C00BA0A97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA7C748F27DDDA6C00BA0A97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA7C749127DDDA6C00BA0A97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA7C749727DDDF4800BA0A97 /* AppFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFactory.swift; sourceTree = "<group>"; };
-		AA7C749A27DDE6B600BA0A97 /* FeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedController.swift; sourceTree = "<group>"; };
 		AA7C749C27DDE6CF00BA0A97 /* MatchListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchListController.swift; sourceTree = "<group>"; };
 		AA7C749E27DDE6E200BA0A97 /* ChatListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListController.swift; sourceTree = "<group>"; };
 		AA7C74A027DDE6F200BA0A97 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
@@ -52,6 +84,77 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA5869FE2810155400E0F777 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				AA586A002810158300E0F777 /* Network.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		AA586A022810159E00E0F777 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AA586A03281015B300E0F777 /* Credentials.swift */,
+				AA586A07281015C600E0F777 /* Reaction.swift */,
+				AA586A09281015D400E0F777 /* RegInfo.swift */,
+				AA586A0B281015F400E0F777 /* Response.swift */,
+				AA586A0D281015FC00E0F777 /* Search.swift */,
+				AA586A0F2810160500E0F777 /* User.swift */,
+				AA586A112810161900E0F777 /* Profile.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AA586A13281016A600E0F777 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				AA586A14281016D800E0F777 /* Button.swift */,
+				AA586A16281016E200E0F777 /* PromptLabel.swift */,
+				AA586A18281016EC00E0F777 /* TextField.swift */,
+				AA586A1A281016F600E0F777 /* Card.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		AA586A1C2810173300E0F777 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				AA586A1D2810174500E0F777 /* FeedModel.swift */,
+				AA586A1F2810174F00E0F777 /* FeedController.swift */,
+				AA586A212810175B00E0F777 /* FeedView.swift */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		AA586A23281017CE00E0F777 /* Chats */ = {
+			isa = PBXGroup;
+			children = (
+				AA7C749E27DDE6E200BA0A97 /* ChatListController.swift */,
+				AA1FF2E3280BB01700CBEDAF /* ChatViewController.swift */,
+				AABF60A82809EBB100D08900 /* ChatCollectionViewCell.swift */,
+				AABBE23428031B8A00D5556E /* MatchCollectionViewCell.swift */,
+			);
+			path = Chats;
+			sourceTree = "<group>";
+		};
+		AA586A242810182300E0F777 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				AA7C74A027DDE6F200BA0A97 /* ProfileController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		AA586A252810183200E0F777 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				AA586A262810184200E0F777 /* LoginController.swift */,
+				AA586A282810184E00E0F777 /* SignupController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		AA7C747727DDDA6100BA0A97 = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +174,9 @@
 		AA7C748227DDDA6100BA0A97 /* Drip */ = {
 			isa = PBXGroup;
 			children = (
+				AA586A13281016A600E0F777 /* Components */,
+				AA586A022810159E00E0F777 /* Models */,
+				AA5869FE2810155400E0F777 /* Network */,
 				AA7C749927DDE66F00BA0A97 /* Scenes */,
 				AA7C748327DDDA6100BA0A97 /* AppDelegate.swift */,
 				AA7C748C27DDDA6C00BA0A97 /* Assets.xcassets */,
@@ -84,13 +190,11 @@
 		AA7C749927DDE66F00BA0A97 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				AA7C749A27DDE6B600BA0A97 /* FeedController.swift */,
+				AA586A252810183200E0F777 /* Login */,
+				AA586A242810182300E0F777 /* Profile */,
+				AA586A23281017CE00E0F777 /* Chats */,
+				AA586A1C2810173300E0F777 /* Feed */,
 				AA7C749C27DDE6CF00BA0A97 /* MatchListController.swift */,
-				AA7C749E27DDE6E200BA0A97 /* ChatListController.swift */,
-				AA7C74A027DDE6F200BA0A97 /* ProfileController.swift */,
-				AABBE23428031B8A00D5556E /* MatchCollectionViewCell.swift */,
-				AABF60A82809EBB100D08900 /* ChatCollectionViewCell.swift */,
-				AA1FF2E3280BB01700CBEDAF /* ChatViewController.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -174,15 +278,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA586A202810174F00E0F777 /* FeedController.swift in Sources */,
+				AA586A122810161900E0F777 /* Profile.swift in Sources */,
+				AA586A012810158300E0F777 /* Network.swift in Sources */,
 				AA7C74A127DDE6F200BA0A97 /* ProfileController.swift in Sources */,
+				AA586A19281016EC00E0F777 /* TextField.swift in Sources */,
 				AA7C749827DDDF4800BA0A97 /* AppFactory.swift in Sources */,
+				AA586A0C281015F400E0F777 /* Response.swift in Sources */,
+				AA586A0A281015D400E0F777 /* RegInfo.swift in Sources */,
+				AA586A292810184E00E0F777 /* SignupController.swift in Sources */,
+				AA586A04281015B300E0F777 /* Credentials.swift in Sources */,
+				AA586A15281016D800E0F777 /* Button.swift in Sources */,
+				AA586A102810160500E0F777 /* User.swift in Sources */,
 				AA7C749F27DDE6E200BA0A97 /* ChatListController.swift in Sources */,
 				AA7C748427DDDA6100BA0A97 /* AppDelegate.swift in Sources */,
+				AA586A272810184200E0F777 /* LoginController.swift in Sources */,
+				AA586A17281016E200E0F777 /* PromptLabel.swift in Sources */,
 				AA7C749D27DDE6CF00BA0A97 /* MatchListController.swift in Sources */,
+				AA586A08281015C600E0F777 /* Reaction.swift in Sources */,
+				AA586A222810175B00E0F777 /* FeedView.swift in Sources */,
 				AABBE23528031B8B00D5556E /* MatchCollectionViewCell.swift in Sources */,
+				AA586A1B281016F600E0F777 /* Card.swift in Sources */,
 				AABF60A92809EBB100D08900 /* ChatCollectionViewCell.swift in Sources */,
+				AA586A0E281015FC00E0F777 /* Search.swift in Sources */,
 				AA1FF2E4280BB01700CBEDAF /* ChatViewController.swift in Sources */,
-				AA7C749B27DDE6B600BA0A97 /* FeedController.swift in Sources */,
+				AA586A1E2810174500E0F777 /* FeedModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
