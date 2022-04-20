@@ -38,6 +38,7 @@ final class CardView: UIView {
         container.layer.cornerRadius = 12
         let blurEffect = UIBlurEffect(style: .light)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.layer.opacity = 0.7
         blurEffectView.frame = container.frame
         blurEffectView.layer.cornerRadius = 12 
         blurEffectView.clipsToBounds = true
@@ -68,6 +69,8 @@ final class CardView: UIView {
         return image
     }()
     
+    
+    
     private func cardImageGeneratior(url: String) -> UIImageView {
         let url = URL(string: url)
         let image = UIImageView()
@@ -85,31 +88,34 @@ final class CardView: UIView {
     
     let ageLabel: UILabel = {
         let label = UILabel()
-        
+        label.text = "27"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 36)
         label.textColor = .white
-        label.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        label.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
         
         return label
     }()
     
     let nameLabel: UILabel = {
         let label = UILabel()
+        label.text = "Влад"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 36)
         label.textColor = .white
-        label.frame = CGRect(x: 0, y: 0, width: 150, height: 100)
+        label.frame = CGRect(x: 0, y: 0, width: 150, height: 50)
             
         return label
     }()
     
     let descriptionLabel: UILabel = {
         let label = UILabel()
+        label.text = "Описание выглядит вот \n так вот так оно и выглядит"
+        label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 24)
         label.textColor = .white
-        label.frame = CGRect(x: 0, y: 0, width: 150, height: 100)
+        label.frame = CGRect(x: 0, y: 0, width: 400, height: 100)
             
         return label
     }()
@@ -121,13 +127,14 @@ final class CardView: UIView {
         label.layer.cornerRadius = 12;
         label.layer.borderWidth = 1
         label.layer.borderColor = UIColor.white.cgColor
-        
+        label.text = "Спорт"
         label.font = UIFont.systemFont(ofSize: 24)
         label.textColor = .white
         label.frame = CGRect(x: 0, y: 0, width: 100, height: 36)
             
         return label
     }()
+    
     
 
     
@@ -167,9 +174,12 @@ final class CardView: UIView {
             self.nameLabel.text = dataSource?.currentCard().name
             self.descriptionLabel.text = dataSource?.currentCard().description
             self.tagsView.text = dataSource?.currentCard().tags[0]
+            let url = URL(string: (dataSource?.currentCard().imgsURL[0])!)
+            self.cardImage.kf.setImage(with: url)
         }
     }
     
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -342,11 +352,11 @@ final class CardView: UIView {
     }
     
     private func layoutCardItems() {
-        self.bottomPanelView.frame = CGRect(x: 0, y: 0, width: self.hardSizeWidth!, height: self.hardSizeHeight! * 0.23)
+        self.bottomPanelView.frame = CGRect(x: 0, y: 0, width: self.hardSizeWidth!, height: self.hardSizeHeight! * 0.18)
         self.cardImage.frame = CGRect(x:0, y:0, width: self.hardSizeWidth!, height: self.hardSizeHeight!)
         self.cardContainerView.pin.top(0).hCenter().width(100%).maxWidth(400).pinEdges()
         self.bottomPanelView.pin.bottom(to: self.cardImage.edge.bottom)
-        self.nameLabel.pin.left(to: self.bottomPanelView.edge.left)
+        self.nameLabel.pin.left(to: self.bottomPanelView.edge.left).marginLeft(24)
         self.nameLabel.pin.top(to: self.bottomPanelView.edge.top)
         
         self.ageLabel.pin.left(to: self.nameLabel.edge.right)

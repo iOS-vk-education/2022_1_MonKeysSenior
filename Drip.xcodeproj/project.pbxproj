@@ -13,7 +13,7 @@
 		AA7C749027DDDA6C00BA0A97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA7C748E27DDDA6C00BA0A97 /* LaunchScreen.storyboard */; };
 		AA7C749827DDDF4800BA0A97 /* AppFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C749727DDDF4800BA0A97 /* AppFactory.swift */; };
 		AA7C749B27DDE6B600BA0A97 /* FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C749A27DDE6B600BA0A97 /* FeedController.swift */; };
-		AA7C749D27DDE6CF00BA0A97 /* MatchListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C749C27DDE6CF00BA0A97 /* MatchListController.swift */; };
+		AA7C749D27DDE6CF00BA0A97 /* LikesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C749C27DDE6CF00BA0A97 /* LikesController.swift */; };
 		AA7C749F27DDE6E200BA0A97 /* ChatListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C749E27DDE6E200BA0A97 /* ChatListController.swift */; };
 		AA7C74A127DDE6F200BA0A97 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C74A027DDE6F200BA0A97 /* ProfileController.swift */; };
 		CC0CDBD02802388A00B5B467 /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = CC0CDBCF2802388A00B5B467 /* PinLayout */; };
@@ -27,7 +27,9 @@
 		CC9A0B8D2809CF890033DE00 /* SignupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9A0B8C2809CF890033DE00 /* SignupController.swift */; };
 		CC9A0B912809CFB20033DE00 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9A0B902809CFB20033DE00 /* LoginController.swift */; };
 		CCDE3F03280DC4650009F15B /* SwipeCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDE3F02280DC4650009F15B /* SwipeCards.swift */; };
-		CCDE3F06280E06F20009F15B /* MatchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDE3F05280E06F20009F15B /* MatchListView.swift */; };
+		CCDE3F06280E06F20009F15B /* LikesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDE3F05280E06F20009F15B /* LikesView.swift */; };
+		CCDE3F08281028530009F15B /* LikesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDE3F07281028530009F15B /* LikesCollectionViewCell.swift */; };
+		CCDE3F0A28103AFF0009F15B /* LikesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDE3F0928103AFF0009F15B /* LikesCollectionView.swift */; };
 		CCFC83B2280C50F700DC802B /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFC83AB280C50F700DC802B /* Response.swift */; };
 		CCFC83B3280C50F700DC802B /* Reaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFC83AC280C50F700DC802B /* Reaction.swift */; };
 		CCFC83B4280C50F700DC802B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFC83AD280C50F700DC802B /* User.swift */; };
@@ -47,7 +49,7 @@
 		AA7C749127DDDA6C00BA0A97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA7C749727DDDF4800BA0A97 /* AppFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFactory.swift; sourceTree = "<group>"; };
 		AA7C749A27DDE6B600BA0A97 /* FeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedController.swift; sourceTree = "<group>"; };
-		AA7C749C27DDE6CF00BA0A97 /* MatchListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchListController.swift; sourceTree = "<group>"; };
+		AA7C749C27DDE6CF00BA0A97 /* LikesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesController.swift; sourceTree = "<group>"; };
 		AA7C749E27DDE6E200BA0A97 /* ChatListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListController.swift; sourceTree = "<group>"; };
 		AA7C74A027DDE6F200BA0A97 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		CC9968A927FC7ADA009C2BD0 /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
@@ -59,7 +61,9 @@
 		CC9A0B8C2809CF890033DE00 /* SignupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupController.swift; sourceTree = "<group>"; };
 		CC9A0B902809CFB20033DE00 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		CCDE3F02280DC4650009F15B /* SwipeCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeCards.swift; sourceTree = "<group>"; };
-		CCDE3F05280E06F20009F15B /* MatchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchListView.swift; sourceTree = "<group>"; };
+		CCDE3F05280E06F20009F15B /* LikesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesView.swift; sourceTree = "<group>"; };
+		CCDE3F07281028530009F15B /* LikesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesCollectionViewCell.swift; sourceTree = "<group>"; };
+		CCDE3F0928103AFF0009F15B /* LikesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesCollectionView.swift; sourceTree = "<group>"; };
 		CCFC83AB280C50F700DC802B /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		CCFC83AC280C50F700DC802B /* Reaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reaction.swift; sourceTree = "<group>"; };
 		CCFC83AD280C50F700DC802B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -126,7 +130,7 @@
 		AA7C749927DDE66F00BA0A97 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				CCDE3F04280DF0A50009F15B /* MatchList */,
+				CCDE3F04280DF0A50009F15B /* Likes */,
 				CC9968AF27FCA723009C2BD0 /* Feed */,
 				AA7C749E27DDE6E200BA0A97 /* ChatListController.swift */,
 				CC9A0B902809CFB20033DE00 /* LoginController.swift */,
@@ -173,13 +177,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		CCDE3F04280DF0A50009F15B /* MatchList */ = {
+		CCDE3F04280DF0A50009F15B /* Likes */ = {
 			isa = PBXGroup;
 			children = (
-				AA7C749C27DDE6CF00BA0A97 /* MatchListController.swift */,
-				CCDE3F05280E06F20009F15B /* MatchListView.swift */,
+				AA7C749C27DDE6CF00BA0A97 /* LikesController.swift */,
+				CCDE3F05280E06F20009F15B /* LikesView.swift */,
+				CCDE3F07281028530009F15B /* LikesCollectionViewCell.swift */,
+				CCDE3F0928103AFF0009F15B /* LikesCollectionView.swift */,
 			);
-			path = MatchList;
+			path = Likes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,10 +267,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC9968B127FCA89C009C2BD0 /* FeedVIew.swift in Sources */,
+				CCDE3F08281028530009F15B /* LikesCollectionViewCell.swift in Sources */,
 				AA7C74A127DDE6F200BA0A97 /* ProfileController.swift in Sources */,
 				AA7C749827DDDF4800BA0A97 /* AppFactory.swift in Sources */,
 				CCFC83B6280C50F700DC802B /* Credentials.swift in Sources */,
-				CCDE3F06280E06F20009F15B /* MatchListView.swift in Sources */,
+				CCDE3F0A28103AFF0009F15B /* LikesCollectionView.swift in Sources */,
+				CCDE3F06280E06F20009F15B /* LikesView.swift in Sources */,
 				CCFC83B4280C50F700DC802B /* User.swift in Sources */,
 				AA7C749F27DDE6E200BA0A97 /* ChatListController.swift in Sources */,
 				CC9968B427FCB3CE009C2BD0 /* Profile.swift in Sources */,
@@ -273,7 +281,7 @@
 				AA7C748427DDDA6100BA0A97 /* AppDelegate.swift in Sources */,
 				1E5C0203280C52DA00F6D69B /* Network.swift in Sources */,
 				CC9A0B892809CF630033DE00 /* PromptLabel.swift in Sources */,
-				AA7C749D27DDE6CF00BA0A97 /* MatchListController.swift in Sources */,
+				AA7C749D27DDE6CF00BA0A97 /* LikesController.swift in Sources */,
 				CCFC83B3280C50F700DC802B /* Reaction.swift in Sources */,
 				CCFC83B7280C50F700DC802B /* Search.swift in Sources */,
 				CC9A0B912809CFB20033DE00 /* LoginController.swift in Sources */,

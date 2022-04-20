@@ -35,9 +35,14 @@ final class FeedViewController: UIViewController {
         card.hardSizeHeight = UIScreen.main.bounds.height * 0.8
         card.delegate = self
         card.dataSource = self
-        
+        card.layer.opacity = 0.1
+//        card.center = CGPoint(x: view.center.x, y: -view.center.y * 4)
 //        view.insertSubview(card, belowSubview: self.lastCard)
         view.addSubview(card)
+        UIView.animate(withDuration: 2, animations: {
+            card.layer.opacity = 1
+//            card.center = self.view.center
+        })
 //        self.lastCard = card
         
     }
