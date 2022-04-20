@@ -40,6 +40,10 @@ final class ProfileViewController: UIViewController {
         let navController = UINavigationController(rootViewController: profileController)
         navController.navigationBar.barStyle = .black
         navController.modalPresentationStyle = .fullScreen
+        UIView.animate(withDuration: 1, animations:  {
+            profileController.view.layoutSubviews()
+        }
+        )
         present(navController, animated: false)
     }
 }

@@ -9,14 +9,15 @@ import Foundation
 import UIKit
 import PinLayout
 
-final class ProfileFormController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+final class ProfileFormController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
 
     
-    var dataObject : [String] = ["Мужской","Женский","Х"];
+    let genderObject : [String] = ["Мужской","Женский","Х"];
+    let favorObject : [String] = ["Мужчину","Женщину","Любой пол"];
     
     let datePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
@@ -32,6 +33,19 @@ final class ProfileFormController: UIViewController, UITextFieldDelegate, UIPick
         return picker
     }()
     
+    let favorPicker: UIPickerView = {
+        let picker = UIPickerView()
+        return picker
+    }()
+    
+    let favorField: TextField = {
+        let field = TextField()
+        field.setupDefault(placeholder: "Кого вы ищете?", security: false)
+//        tf.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
+//        tf.addTarget(self, action: #selector(handleEmailInput), for: .editingChanged)
+        return field
+    }()
+    
     let mainLabel: UILabel = {
         let label = UILabel()
         label.text = "Профиль"
@@ -43,6 +57,27 @@ final class ProfileFormController: UIViewController, UITextFieldDelegate, UIPick
     let nameTextField: TextField = {
         let field = TextField()
         field.setupDefault(placeholder: "Имя", security: false)
+//        tf.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
+//        tf.addTarget(self, action: #selector(handleEmailInput), for: .editingChanged)
+        return field
+    }()
+    
+    let submitBtn: Button = {
+        let button = Button(type: .system)
+        button.setupDefault(title: "Сохранить", titleColor: .white, backgroundColor: .black)
+//        button.addTarget(self, action: #selector(handleSignup), for: .touchUpInside)
+        return button
+    }()
+    
+    let aboutField: UITextView = {
+        let field = UITextView()
+        field.text = "Расскажите о себе"
+        field.textColor = UIColor.lightGray
+        field.translatesAutoresizingMaskIntoConstraints = false
+        field.layer.cornerRadius = 12
+        field.font = UIFont.boldSystemFont(ofSize: 14)
+        field.backgroundColor = UIColor(white: 0, alpha: 0.1)
+        field.textContainerInset = UIEdgeInsets(top: 12.0, left: 10.0, bottom: 0.0, right: 12.0);
 //        tf.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
 //        tf.addTarget(self, action: #selector(handleEmailInput), for: .editingChanged)
         return field
@@ -79,14 +114,22 @@ final class ProfileFormController: UIViewController, UITextFieldDelegate, UIPick
         
         view.addGestureRecognizer(swipeLeft)
         
-        title = "Settings"
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(doneAction))
         
-        view.addSubview(mainLabel)
+        view.addGestureRecognizer(tapRecognizer)
+        
+        title = "Профиль"
+        
+//        view.addSubview(mainLabel)
         view.addSubview(nameTextField)
         view.addSubview(dateField)
         view.addSubview(genderField)
+        view.addSubview(favorField)
+        view.addSubview(aboutField)
+        view.addSubview(submitBtn)
         
         self.nameTextField.delegate = self
+        self.aboutField.delegate = self
         
         datePicker.addTarget(self, action: #selector(dateChange), for: .valueChanged)
         
@@ -97,6 +140,10 @@ final class ProfileFormController: UIViewController, UITextFieldDelegate, UIPick
         self.genderField.inputView = genderPicker
         self.genderPicker.delegate = self
         self.genderPicker.dataSource = self
+        
+        self.favorField.inputView = favorPicker
+        self.favorPicker.delegate = self
+        self.favorPicker.dataSource = self
         
         dateField.inputAccessoryView = toolbar
     }
@@ -127,33 +174,66 @@ final class ProfileFormController: UIViewController, UITextFieldDelegate, UIPick
         print(datePicker.date)
         print(dateField.text!)
         
-        mainLabel.pin
-            .hCenter()
-            .top(view.pin.safeArea + 15)
-            .sizeToFit()
         
         nameTextField
             .pin
-            .below(of: mainLabel)
-            .width(50%)
+            .top(view.pin.safeArea + 15)
+            .width(70%)
             .height(5%)
             .hCenter()
-            .marginTop(10)
     
         
         dateField.pin
             .below(of: nameTextField)
             .hCenter()
             .height(5%)
-            .width(50%)
-            .marginTop(10)
+            .width(70%)
+            .marginTop(15)
         
         genderField.pin
             .below(of: dateField)
             .hCenter()
             .height(5%)
-            .width(50%)
-            .marginTop(10)
+            .width(70%)
+            .marginTop(15)
+        
+        aboutField.pin
+            .below(of: genderField)
+            .hCenter()
+            .height(20%)
+            .width(70%)
+            .marginTop(15)
+        
+        favorField.pin
+            .below(of: aboutField)
+            .hCenter()
+            .height(5%)
+            .width(70%)
+            .marginTop(15)
+        
+        submitBtn
+            .pin
+            .below(of: favorField)
+            .width(70%)
+            .height(5%)
+            .hCenter()
+            .marginTop(4%)
+    }
+    
+    @objc
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.white
+        }
+    }
+    
+    @objc
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Расскажите о себе"
+            textView.textColor = UIColor.lightGray
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -181,16 +261,25 @@ final class ProfileFormController: UIViewController, UITextFieldDelegate, UIPick
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return self.dataObject.count;
+        return self.genderObject.count;
     }
 
     private func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return self.dataObject[row];
+        if pickerView == self.favorPicker {
+            return self.favorObject[row];
+        } else {
+            return self.genderObject[row];
+        }
     }
 
     internal func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.genderField.text = self.dataObject[row];
-        self.genderField.endEditing(true)
+        if pickerView == self.favorPicker {
+            self.favorField.text = self.favorObject[row];
+            self.favorField.endEditing(true)
+        } else {
+            self.genderField.text = self.genderObject[row];
+            self.genderField.endEditing(true)
+        }
     }
     
     @objc
