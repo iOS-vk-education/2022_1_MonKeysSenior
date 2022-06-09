@@ -74,6 +74,8 @@ func request<T: Codable>(method: String, path: String, headers: Dictionary<Strin
             return
         }
         do {
+//            print(response.)
+            
             let decodedResponse = try JSONDecoder().decode(Response<T>.self, from: data)
             print(decodedResponse)
             if decodedResponse.status == 200 {
@@ -161,8 +163,8 @@ func updateProfileRequest(userInfo: User, completion: @escaping (Result<User>) -
     }
 }
 
-func feedRequest(completion: @escaping (Result<Array<User>>) -> Void) {
-    request(method: "GET", path: "feed", headers: [:], body: nil, objectType: Array<User>.self) { (result: Result) in
+func feedRequest(completion: @escaping (Result<Users>) -> Void) {
+    request(method: "GET", path: "user/cards", headers: [:], body: nil, objectType: Users.self) { (result: Result) in
         switch result {
         case .success(let object):
             completion(Result.success(object))

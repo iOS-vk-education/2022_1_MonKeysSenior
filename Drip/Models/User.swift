@@ -86,8 +86,16 @@ struct User: Codable {
         } catch {
             prefer = ""
         }
-        fromAge = try container.decode(Int.self, forKey: .fromAge)
-        toAge = try container.decode(Int.self, forKey: .toAge)
+        do {
+            fromAge = try container.decode(Int.self, forKey: .fromAge)
+        } catch {
+            fromAge = 0
+        }
+        do {
+            toAge = try container.decode(Int.self, forKey: .toAge)
+        } catch {
+            toAge = 0
+        }
         date = try container.decode(String.self, forKey: .date)
         age = try container.decode(Int.self, forKey: .age)
         do {
@@ -113,3 +121,8 @@ struct User: Codable {
         }
     }
 }
+
+struct Users: Codable {
+    var Users: [User] = Array();
+}
+

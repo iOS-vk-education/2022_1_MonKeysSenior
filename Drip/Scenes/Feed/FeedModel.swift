@@ -25,6 +25,16 @@ final class FeedModel {
     }
     
     func loadData(completion: (() -> Void)? = nil) -> [Profile] {
+        feedRequest(completion: { (result: Result) in
+            switch result {
+            case .success(let result):
+                print(result)
+                print("fuck")
+            case .failure(let error):
+                print(error)
+                print("an error")
+            }
+        })
         return [
             Profile(
                 id: "1",
