@@ -14,7 +14,7 @@ enum Constants {
 }
 
 enum Result<T> {
-    case success(T)
+    case success(T?)
     case failure(Error)
 }
 
@@ -75,6 +75,7 @@ func request<T: Codable>(method: String, path: String, headers: Dictionary<Strin
         }
         do {
             let decodedResponse = try JSONDecoder().decode(Response<T>.self, from: data)
+            print(decodedResponse)
             if decodedResponse.status == 200 {
                 completion(Result.success(decodedResponse.body))
             } else {
@@ -119,7 +120,7 @@ func logoutRequest(completion: @escaping (Result<User>) -> Void) {
 
 func signupRequest(credentials: Credentials, completion: @escaping (Result<User>) -> Void) {
     guard let jsonData = try? JSONEncoder().encode(credentials) else {
-        print("loginRequest: convert model to JSON data failed")
+        print("signupRequest: convert model to JSON data failed")
         return
     }
     

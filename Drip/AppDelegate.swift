@@ -20,7 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         layer0.bounds = window!.bounds
         window?.layer.addSublayer(layer0)
         
-        let rootViewController = factory.buildTabBarController()
+        let rootViewController = UINavigationController(rootViewController: factory.buildLoginViewController())
+        
+        rootViewController.isNavigationBarHidden = true
         
         window?.rootViewController = rootViewController
         window?.makeKeyAndVisible()

@@ -2,6 +2,8 @@ import UIKit
 import PinLayout
 
 final class SignupViewController: UIViewController {
+    let factory = AppFactory()
+    
     let logo: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -56,7 +58,7 @@ final class SignupViewController: UIViewController {
     let loginButton: Button = {
         let button = Button(type: .system)
         button.setupDefault(title: "Login", titleColor: .white, backgroundColor: .black)
-        button.addTarget(self, action: #selector(handleSignup), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handlePresentLogin), for: .touchUpInside)
         return button
     }()
     
@@ -69,7 +71,6 @@ final class SignupViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupBackground()
         view.addSubview(logo)
         view.addSubview(emailTextField)
         view.addSubview(emailPrompt)
@@ -151,24 +152,6 @@ final class SignupViewController: UIViewController {
             .marginTop(1%)
     }
 
-    func setupBackground() {
-        view.frame = CGRect(x: 0, y: 0, width: 550, height: 844)
-        view.backgroundColor = .white
-        let layer0 = CAGradientLayer()
-        layer0.colors = [
-          UIColor(red: 0.059, green: 0.067, blue: 0.235, alpha: 1).cgColor,
-          UIColor(red: 0.278, green: 0.161, blue: 0.545, alpha: 1).cgColor,
-          UIColor(red: 0.694, green: 0.039, blue: 0.792, alpha: 1).cgColor
-        ]
-        layer0.locations = [0, 0.46, 1]
-        layer0.startPoint = CGPoint(x: 0.25, y: 0.5)
-        layer0.endPoint = CGPoint(x: 0.75, y: 0.5)
-        layer0.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: -1.11, b: 0.82, c: -1, d: -0.29, tx: 1.61, ty: 0.32))
-        layer0.bounds = view.bounds.insetBy(dx: -0.5*view.bounds.size.width, dy: -0.5*view.bounds.size.height)
-        layer0.position = view.center
-        view.layer.addSublayer(layer0)
-    }
-
     @objc
     func handleEmailInput() {
         emailPrompt.isPrompt()
@@ -203,6 +186,11 @@ final class SignupViewController: UIViewController {
     @objc
     func handleSignup() {
         validateForm()
+    }
+    
+    @objc
+    func handlePresentLogin() {
+        presentingViewController?.dismiss(animated: true, completion: nil)
     }
 
     @objc
@@ -245,7 +233,19 @@ final class SignupViewController: UIViewController {
     }
 
     func startSignup(email: String, password: String) {
-        print("Please call any Signup api for registration: ", email, password)
+        signupRequest(credentials: Credentials(email: email, password: password)) { (result: Result) in
+            switch result {
+            case .success(_):
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                    let tabBarController = self.factory.buildTabBarController()
+                    tabBarController.modalPresentationStyle = .fullScreen
+                    tabBarController.modalTransitionStyle = .flipHorizontal
+                    self.navigationController?.present(tabBarController, animated: true, completion: nil)
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
 

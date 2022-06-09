@@ -1,72 +1,111 @@
 import UIKit
 
+
 final class FeedViewController: UIViewController {
     private let model = FeedModel()
-    private let feedView = FeedView()
-    private var _startCenter = CGPoint();
+//    private var lastCard = CardView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        feedView.layer.cornerRadius = 12;
-        feedView.delegate = self
-        feedView.dataSource = self
+//        lastCard.layer.cornerRadius = 12;
+//        lastCard.delegate = self
+//        lastCard.dataSource = self
+//        feedView.superview = self
+        
+        
         view.frame = CGRect(x:0, y:0 ,width: view.frame.width, height: view.frame.height)
-        
-        view.addSubview(feedView)
-        feedView.frame = CGRect(x: 24, y:96, width: 350, height: 575)
-        
-        self.feedView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(swipeHandler)))
-        
-        
+//        view.addSubview(lastCard)
+//
+//
+//        lastCard.frame = CGRect(x: 12, y:64, width: view.frame.width-24, height: view.frame.height*0.9)
+//
+//        lastCard.hardSizeWidth = view.frame.width-24
+//        lastCard.hardSizeHeight = view.frame.height*0.9
+//        lastCard.layoutIfNeeded()
+        addCardToStack()
     }
     
-    @objc
-    func swipeHandler(gesture: UIPanGestureRecognizer) {
-//        print(gesture.location(in: self.view))
+    
+    
+    private func addCardToStack() -> Void {
+        let card = CardView()
+//        print(view)
+        card.frame = CGRect(x: 12,  y:64, width: UIScreen.main.bounds.width-24, height: UIScreen.main.bounds.height*0.8)
+        card.hardSizeWidth = UIScreen.main.bounds.width-24
+        card.hardSizeHeight = UIScreen.main.bounds.height * 0.8
+        card.delegate = self
+        card.dataSource = self
+        card.layer.opacity = 0.1
+//        card.center = CGPoint(x: view.center.x, y: -view.center.y * 4)
+//        view.insertSubview(card, belowSubview: self.lastCard)
+        view.addSubview(card)
+        UIView.animate(withDuration: 2, animations: {
+            card.layer.opacity = 1
+//            card.center = self.view.center
+        })
+//        self.lastCard = card
         
-//        print(location.x)
-//        print(view.frame.width/2-location.x)
-//        feedView.transform = CGAffineTransform(rotationAngle: ((location.x-view.frame.width/2) * .pi) / 720)
-        
-       
-        
-        if(gesture.state == UIPanGestureRecognizer.State.began) {
-            self._startCenter = feedView.center
-        } else if (gesture.state == UIPanGestureRecognizer.State.changed) {
-            print("helllo")
-            let location = gesture.location(in: self.view)
-            var transform = CGAffineTransform.identity
-            transform = transform.translatedBy(x: location.x - self._startCenter.x, y: location.y - self._startCenter.y)
-            
-            transform = transform.rotated(by: ((location.x-view.frame.width/2) * .pi) / 720)
-            feedView.transform = transform
-//            feedView.center = locat
-        }
-        
-        if(gesture.state == UIPanGestureRecognizer.State.ended){
-            print("end")
-            UIView.animate(withDuration: 1, animations: {
-                self.feedView.transform = .identity
-                self.feedView.center = self._startCenter
-            })
-            
-        }
     }
+    private func outOfCards() -> Void {
+        let outOfCards = UIImageView()
+        
+        let descriptionLabel: UILabel = {
+            let label = UILabel()
+            label.text = "Карточки кончились"
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.font = UIFont.systemFont(ofSize: 24)
+            label.textAlignment = NSTextAlignment.center;
+            label.textColor = .white
+            label.frame = CGRect(x: 0, y: 0, width: 300, height: 100)
+                
+            return label
+        }()
+        
+        outOfCards.image = UIImage(named: "drip_gradient")
+        outOfCards.frame = CGRect(x: 0, y: 0, width: 120, height: 200)
+        
+        outOfCards.center = view.center
+        view.addSubview(descriptionLabel)
+        
+        view.addSubview(outOfCards)
+        descriptionLabel.center = view.center
+        descriptionLabel.pin.top(to: outOfCards.edge.bottom)
+    }
+    
+    
 }
 
-extension FeedViewController: FeedViewDelegate {
+extension FeedViewController: CardViewDelegate {
     @objc
     func likedCurrent() {
         print("liked")
+        if (self.model.next()){
+            self.addCardToStack()
+        } else {
+            outOfCards()
+        }
+//        self.lastCard.removeFromSuperview()
+//        addCardToStack(data: self.model.currentCard())
     }
     @objc
     func dislikedCurrent() {
         print("disliked")
+        if (self.model.next()){
+            self.addCardToStack()
+        } else {
+            outOfCards()
+        }
+//        self.lastCard.removeFromSuperview()
+//        addCardToStack(data: self.model.currentCard())
+    }
+    @objc
+    func expandCurrent() {
+        print("disliked")
     }
 }
 
-extension FeedViewController: FeedViewDataSource {
+extension FeedViewController: CardViewDataSource {
     func currentCard() -> Profile {
-        return self.model.currentCard()
+        return self.model.currentCard()!
     }
 }
