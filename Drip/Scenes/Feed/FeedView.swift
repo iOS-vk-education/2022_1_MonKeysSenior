@@ -224,7 +224,7 @@ final class CardView: UIView {
     
     @objc
     private func likedCurrent() {
-        print("liked current")
+//        print("liked current")
         
         UIView.animate(withDuration: 1, animations: {
             self.transform = .identity
@@ -246,7 +246,7 @@ final class CardView: UIView {
     
     @objc
     private func expandCurrent() {
-        print("ayo")
+//        print("ayo")
         UIView.animate(withDuration: 0.5, animations: {
             self.layoutExpanded()
         })
@@ -263,7 +263,7 @@ final class CardView: UIView {
     }
     
     override func layoutSubviews() {
-        print("hello")
+//        print("hello")
         super.layoutSubviews()
         layoutCardItems()
 //        button.frame = CGRect(origin: frame.origin, size: CGSize(width: frame.width, height: frame.height / 2))
@@ -314,14 +314,14 @@ final class CardView: UIView {
         if(gesture.state == UIPanGestureRecognizer.State.began) {
             self._startCenter = self.center
             shrinkCurrent()
-            print("check")
+//            print("check")
         } else if (gesture.state == UIPanGestureRecognizer.State.changed) {
 
             let location = gesture.location(in: self.superview)
             var transform = CGAffineTransform.identity
             transform = transform.translatedBy(x: location.x - self._startCenter.x, y: location.y - self._startCenter.y)
             
-            print(location.x-self.hardSizeWidth!/2)
+//            print(location.x-self.hardSizeWidth!/2)
             transform = transform.rotated(by: ((location.x-self.hardSizeWidth!/2) * .pi) / 720)
             self.transform = transform
 //            feedView.center = locat

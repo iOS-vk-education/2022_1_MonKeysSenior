@@ -15,7 +15,7 @@ final class LoginViewController: UIViewController {
 
     let emailTextField: TextField = {
         let tf = TextField()
-        tf.setupDefault(placeholder: "Email", security: false)
+        tf.setupDefault(defaultValue: nil, placeholder: "Email", security: false)
         tf.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
         tf.addTarget(self, action: #selector(handleEmailInput), for: .editingChanged)
         return tf
@@ -29,7 +29,7 @@ final class LoginViewController: UIViewController {
     
     let passwordTextField: TextField = {
         let tf = TextField()
-        tf.setupDefault(placeholder: "Password", security: true)
+        tf.setupDefault(defaultValue: nil, placeholder: "Password", security: true)
         tf.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
         tf.addTarget(self, action: #selector(handlePasswordInput), for: .editingChanged)
         return tf

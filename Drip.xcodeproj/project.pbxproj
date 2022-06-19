@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E82397F285F79A700AF92DC /* Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E82397E285F79A700AF92DC /* Picker.swift */; };
 		AA1FF2E4280BB01700CBEDAF /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1FF2E3280BB01700CBEDAF /* ChatViewController.swift */; };
 		AA586A012810158300E0F777 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA586A002810158300E0F777 /* Network.swift */; };
 		AA586A04281015B300E0F777 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA586A03281015B300E0F777 /* Credentials.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E82397E285F79A700AF92DC /* Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picker.swift; sourceTree = "<group>"; };
 		AA1FF2E3280BB01700CBEDAF /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		AA1FF2E5280C0AA800CBEDAF /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		AA586A002810158300E0F777 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				AA586A14281016D800E0F777 /* Button.swift */,
 				AA586A16281016E200E0F777 /* PromptLabel.swift */,
 				AA586A18281016EC00E0F777 /* TextField.swift */,
+				1E82397E285F79A700AF92DC /* Picker.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				AA6318CA28107A2800C364E1 /* LikesCollectionViewCell.swift in Sources */,
 				AA586A0C281015F400E0F777 /* Response.swift in Sources */,
 				AA586A0A281015D400E0F777 /* RegInfo.swift in Sources */,
+				1E82397F285F79A700AF92DC /* Picker.swift in Sources */,
 				AA586A292810184E00E0F777 /* SignupController.swift in Sources */,
 				CC3694FF285241B000CF97C9 /* LikesView.swift in Sources */,
 				AA586A04281015B300E0F777 /* Credentials.swift in Sources */,

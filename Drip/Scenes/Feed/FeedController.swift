@@ -78,7 +78,7 @@ final class FeedViewController: UIViewController {
 extension FeedViewController: CardViewDelegate {
     @objc
     func likedCurrent() {
-        print("liked")
+//        print("liked")
         if (self.model.next()){
             self.addCardToStack()
         } else {
@@ -89,7 +89,7 @@ extension FeedViewController: CardViewDelegate {
     }
     @objc
     func dislikedCurrent() {
-        print("disliked")
+//        print("disliked")
         if (self.model.next()){
             self.addCardToStack()
         } else {
@@ -100,7 +100,7 @@ extension FeedViewController: CardViewDelegate {
     }
     @objc
     func expandCurrent() {
-        print("disliked")
+//        print("disliked")
     }
 }
 

@@ -15,16 +15,21 @@ class TextField: UITextField {
         return bounds.inset(by: padding)
     }
     
-    open func setupDefault(placeholder: String, security: Bool) -> Void {
+    open func setupDefault(defaultValue: String?, placeholder: String, security: Bool) -> Void {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.attributedPlaceholder = NSAttributedString(
             string: placeholder,
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]
         )
+        if defaultValue != nil {
+            print(defaultValue)
+            self.text = defaultValue
+        }
         self.textColor = .white
         self.isSecureTextEntry = security
         self.layer.cornerRadius = 12
         self.font = UIFont.boldSystemFont(ofSize: 14)
         self.backgroundColor = UIColor(white: 0, alpha: 0.1)
+        self.autocapitalizationType = .none
     }
 }

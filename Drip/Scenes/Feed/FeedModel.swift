@@ -28,10 +28,10 @@ final class FeedModel {
         feedRequest(completion: { (result: Result) in
             switch result {
             case .success(let result):
-                print(result)
+//                print(result)
                 print("fuck")
             case .failure(let error):
-                print(error)
+//                print(error)
                 print("an error")
             }
         })

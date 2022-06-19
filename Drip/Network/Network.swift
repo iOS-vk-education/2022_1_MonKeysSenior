@@ -74,8 +74,6 @@ func request<T: Codable>(method: String, path: String, headers: Dictionary<Strin
             return
         }
         do {
-//            print(response.)
-            
             let decodedResponse = try JSONDecoder().decode(Response<T>.self, from: data)
             print(decodedResponse)
             if decodedResponse.status == 200 {

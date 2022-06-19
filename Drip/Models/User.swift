@@ -2,6 +2,7 @@ struct User: Codable {
     var id: UInt64
     var email: String
     var password: String
+    var name: String
     var gender: String
     var prefer: String
     var fromAge: Int
@@ -18,6 +19,7 @@ struct User: Codable {
         case id
         case email
         case password
+        case name
         case gender
         case prefer
         case fromAge = "fromage"
@@ -38,6 +40,11 @@ struct User: Codable {
             try container.encode(password, forKey: .password)
         } catch {
             try container.encode("", forKey: .password)
+        }
+        do {
+            try container.encode(name, forKey: .name)
+        } catch {
+            try container.encode("", forKey: .name)
         }
         try container.encode(gender, forKey: .gender)
         do {
@@ -80,7 +87,16 @@ struct User: Codable {
         } catch {
             password = ""
         }
-        gender = try container.decode(String.self, forKey: .gender)
+        do {
+            name = try container.decode(String.self, forKey: .name)
+        } catch {
+            name = ""
+        }
+        do {
+            gender = try container.decode(String.self, forKey: .gender)
+        } catch {
+            gender = ""
+        }
         do {
             prefer = try container.decode(String.self, forKey: .prefer)
         } catch {
@@ -96,14 +112,26 @@ struct User: Codable {
         } catch {
             toAge = 0
         }
-        date = try container.decode(String.self, forKey: .date)
-        age = try container.decode(Int.self, forKey: .age)
+        do {
+            date = try container.decode(String.self, forKey: .date)
+        } catch {
+            date = ""
+        }
+        do {
+            age = try container.decode(Int.self, forKey: .age)
+        } catch {
+            age = 0
+        }
         do {
             description = try container.decode(String.self, forKey: .description)
         } catch {
             description = ""
         }
-        imgs = try container.decode(Array<String>.self, forKey: .imgs)
+        do {
+            imgs = try container.decode(Array<String>.self, forKey: .imgs)
+        } catch {
+            imgs = []
+        }
         do {
             tags = try container.decode(Array<String>.self, forKey: .tags)
         } catch {
