@@ -26,6 +26,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.rootViewController = rootViewController
         window?.makeKeyAndVisible()
+        
+        let defaults = UserDefaults.standard
+        let defaultValue = ["isFullRegistered" : true]
+        defaults.register(defaults: defaultValue)
+        
         return true
     }
+    
+    func applicationDidFinishLaunching(_ application: UIApplication) {
+        let defaults = UserDefaults.standard
+        let defaultValue = ["isFullRegistered" : true, "byCookes" : false]
+        defaults.register(defaults: defaultValue)
+    }
+    
+//    func applicationDidFinishLaunching() {
+//        let defaults = UserDefaults.standard
+//        let defaultValue = ["isFullRegistered" : true]
+//        defaults.register(defaults: defaultValue)
+//    }
 }

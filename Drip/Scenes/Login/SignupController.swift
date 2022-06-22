@@ -237,10 +237,17 @@ final class SignupViewController: UIViewController {
             switch result {
             case .success(_):
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-                    let tabBarController = self.factory.buildTabBarController()
-                    tabBarController.modalPresentationStyle = .fullScreen
-                    tabBarController.modalTransitionStyle = .flipHorizontal
-                    self.navigationController?.present(tabBarController, animated: true, completion: nil)
+                    let defaults = UserDefaults.standard
+                    defaults.set(false, forKey: "isFullRegistered")
+                    defaults.set(true, forKey: "byCookes")
+                    let profileController = ProfileSignupViewController()
+                    let navController = UINavigationController(rootViewController: profileController)
+                    navController.navigationBar.barStyle = .black
+                    navController.modalPresentationStyle = .fullScreen
+                    UIView.animate(withDuration: 1, animations:  {
+                        profileController.view.layoutSubviews()
+                    })
+                    self.present(navController, animated: false)
                 }
             case .failure(let error):
                 print(error)

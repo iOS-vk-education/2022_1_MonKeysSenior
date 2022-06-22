@@ -62,12 +62,38 @@ final class LoginViewController: UIViewController {
             switch result {
             case .success(_):
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                    let defaults = UserDefaults.standard
+                    let isFullRegistered = defaults.bool(forKey: "isFullRegistered")
+                    if !isFullRegistered {
+                        let profileController = ProfileSignupViewController()
+                        let navController = UINavigationController(rootViewController: profileController)
+                        navController.navigationBar.barStyle = .black
+                        navController.modalPresentationStyle = .fullScreen
+                        UIView.animate(withDuration: 1, animations:  {
+                            profileController.view.layoutSubviews()
+                        })
+                        
+                        self.present(navController, animated: false)
+                    }
+                    defaults.set(true, forKey: "byCookes")
                     let tabBarController = self.factory.buildTabBarController()
                     tabBarController.modalPresentationStyle = .fullScreen
                     self.navigationController?.present(tabBarController, animated: false, completion: nil)
                 }
             case .failure(_):
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                    let defaults = UserDefaults.standard
+                    let isFullRegistered = defaults.bool(forKey: "isFullRegistered")
+                    if !isFullRegistered {
+                        let profileController = ProfileSignupViewController()
+                        let navController = UINavigationController(rootViewController: profileController)
+                        navController.navigationBar.barStyle = .black
+                        navController.modalPresentationStyle = .fullScreen
+                        UIView.animate(withDuration: 1, animations:  {
+                            profileController.view.layoutSubviews()
+                        })
+                        self.present(navController, animated: false)
+                    }
                     self.view.addSubview(self.logo)
                     self.view.addSubview(self.emailTextField)
                     self.view.addSubview(self.emailPrompt)

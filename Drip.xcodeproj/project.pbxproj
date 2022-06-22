@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1E82397F285F79A700AF92DC /* Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E82397E285F79A700AF92DC /* Picker.swift */; };
+		1E8239812863ABDE00AF92DC /* ProfileSignupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8239802863ABDE00AF92DC /* ProfileSignupController.swift */; };
 		AA1FF2E4280BB01700CBEDAF /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1FF2E3280BB01700CBEDAF /* ChatViewController.swift */; };
 		AA586A012810158300E0F777 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA586A002810158300E0F777 /* Network.swift */; };
 		AA586A04281015B300E0F777 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA586A03281015B300E0F777 /* Credentials.swift */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		1E82397E285F79A700AF92DC /* Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picker.swift; sourceTree = "<group>"; };
+		1E8239802863ABDE00AF92DC /* ProfileSignupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSignupController.swift; sourceTree = "<group>"; };
 		AA1FF2E3280BB01700CBEDAF /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		AA1FF2E5280C0AA800CBEDAF /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		AA586A002810158300E0F777 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 			children = (
 				AA7C74A027DDE6F200BA0A97 /* ProfileController.swift */,
 				AA6318C0281076A600C364E1 /* ProfileSettingsController.swift */,
+				1E8239802863ABDE00AF92DC /* ProfileSignupController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				AABBE23528031B8B00D5556E /* MatchCollectionViewCell.swift in Sources */,
 				AA6318C1281076A600C364E1 /* ProfileSettingsController.swift in Sources */,
 				AABF60A92809EBB100D08900 /* ChatCollectionViewCell.swift in Sources */,
+				1E8239812863ABDE00AF92DC /* ProfileSignupController.swift in Sources */,
 				AA586A0E281015FC00E0F777 /* Search.swift in Sources */,
 				AA1FF2E4280BB01700CBEDAF /* ChatViewController.swift in Sources */,
 				AA586A1E2810174500E0F777 /* FeedModel.swift in Sources */,

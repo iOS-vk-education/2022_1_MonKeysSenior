@@ -28,17 +28,21 @@ final class ProfileViewController: UIViewController {
     
     @objc
     func touchLogoutBtn() {
-        presentingViewController?.dismiss(animated: true, completion: nil)
         let cookies = HTTPCookieStorage.shared.cookies(for: URL(string: "https://drip.monkeys.team/api/v1")!)
         for cookie in cookies ?? [] {
             HTTPCookieStorage.shared.deleteCookie(cookie as HTTPCookie)
         }
-
-        let loginController = factory.buildLoginViewController()
-        let navController = UINavigationController(rootViewController: loginController)
-        loginController.modalTransitionStyle = .flipHorizontal
-        loginController.modalPresentationStyle = .fullScreen
-        present(navController, animated: true, completion: nil)
+        let defaults = UserDefaults.standard
+        let byCookes = defaults.bool(forKey: "byCookes")
+        if byCookes {
+            let loginController = self.factory.buildLoginViewController()
+            let navController = UINavigationController(rootViewController: loginController)
+            loginController.modalTransitionStyle = .flipHorizontal
+            loginController.modalPresentationStyle = .fullScreen
+            self.present(navController, animated: true, completion: nil)
+        } else {
+            presentingViewController?.dismiss(animated: true, completion: nil)
+        }
     }
 
     @objc

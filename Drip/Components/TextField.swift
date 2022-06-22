@@ -31,5 +31,6 @@ class TextField: UITextField {
         self.font = UIFont.boldSystemFont(ofSize: 14)
         self.backgroundColor = UIColor(white: 0, alpha: 0.1)
         self.autocapitalizationType = .none
+        self.autocorrectionType = .no
     }
 }
