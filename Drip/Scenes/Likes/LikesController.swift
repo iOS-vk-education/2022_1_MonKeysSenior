@@ -19,7 +19,7 @@ final class MatchListViewController: UIViewController, UIScrollViewDelegate, Car
     
     let model = FeedModel()
     
-    func currentCard() -> Profile {
+    func currentCard() -> User {
         return self.model.currentCard()!
     }
     

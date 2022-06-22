@@ -13,6 +13,7 @@ struct User: Codable {
     var tags: Array<String>
     var reportStatus: String
     var payment: Bool
+    var name: String
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -29,11 +30,13 @@ struct User: Codable {
         case tags
         case reportStatus
         case payment
+        case name
     }
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
         try container.encode(email, forKey: .email)
+        try container.encode(name, forKey: .name)
         do {
             try container.encode(password, forKey: .password)
         } catch {
@@ -75,6 +78,7 @@ struct User: Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(UInt64.self, forKey: .id)
         email = try container.decode(String.self, forKey: .email)
+        name = try container.decode(String.self, forKey: .name)
         do {
             password = try container.decode(String.self, forKey: .password)
         } catch {

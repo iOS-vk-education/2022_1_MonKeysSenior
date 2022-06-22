@@ -22,7 +22,12 @@ final class FeedViewController: UIViewController {
 //        lastCard.hardSizeWidth = view.frame.width-24
 //        lastCard.hardSizeHeight = view.frame.height*0.9
 //        lastCard.layoutIfNeeded()
-        addCardToStack()
+        sleep(1)
+        if(self.model.hasCards()){
+            addCardToStack()
+        } else {
+            outOfCards()
+        }
     }
     
     
@@ -52,24 +57,29 @@ final class FeedViewController: UIViewController {
         let descriptionLabel: UILabel = {
             let label = UILabel()
             label.text = "Карточки кончились"
-            label.translatesAutoresizingMaskIntoConstraints = false
+//            label.translatesAutoresizingMaskIntoConstraints = false
             label.font = UIFont.systemFont(ofSize: 24)
             label.textAlignment = NSTextAlignment.center;
             label.textColor = .white
-            label.frame = CGRect(x: 0, y: 0, width: 300, height: 100)
+            label.frame = CGRect(x: 0, y: 200, width: 300, height: 100)
+//            label.textAlignment = .
+            
                 
             return label
         }()
         
         outOfCards.image = UIImage(named: "drip_gradient")
-        outOfCards.frame = CGRect(x: 0, y: 0, width: 120, height: 200)
+        outOfCards.frame = CGRect(x: 200, y: 0, width: 120, height: 200)
         
         outOfCards.center = view.center
-        view.addSubview(descriptionLabel)
+        descriptionLabel.center = view.center
+        
+        
+        
+//        descriptionLabel.pin.left(view.pin.safeArea.left + 20).top(view.pin.safeArea.top + 20).height(50).width(50)
         
         view.addSubview(outOfCards)
-        descriptionLabel.center = view.center
-        descriptionLabel.pin.top(to: outOfCards.edge.bottom)
+        view.addSubview(descriptionLabel)
     }
     
     
@@ -79,6 +89,8 @@ extension FeedViewController: CardViewDelegate {
     @objc
     func likedCurrent() {
         print("liked")
+        print(self.model.currentCard()!.id)
+        reactionRequest(reaction: Reaction(id: self.model.currentCard()!.id, reaction: 1), completion: {_ in } )
         if (self.model.next()){
             self.addCardToStack()
         } else {
@@ -90,6 +102,7 @@ extension FeedViewController: CardViewDelegate {
     @objc
     func dislikedCurrent() {
         print("disliked")
+        reactionRequest(reaction: Reaction(id: self.model.currentCard()!.id, reaction: 2), completion: {_ in } )
         if (self.model.next()){
             self.addCardToStack()
         } else {
@@ -105,7 +118,7 @@ extension FeedViewController: CardViewDelegate {
 }
 
 extension FeedViewController: CardViewDataSource {
-    func currentCard() -> Profile {
+    func currentCard() -> User {
         return self.model.currentCard()!
     }
 }

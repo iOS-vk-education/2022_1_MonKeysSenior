@@ -10,7 +10,7 @@ protocol CardViewDelegate: AnyObject {
 }
 
 protocol CardViewDataSource: AnyObject {
-    func currentCard() -> Profile
+    func currentCard() -> User
 }
 
 final class CardView: UIView {
@@ -21,7 +21,11 @@ final class CardView: UIView {
     
     var hardSizeHeight: CGFloat?
     
+    var currentImg: Int?
+    
     var swipeLock: Bool?
+    
+    var reactionsEnabled: Bool = true
     
     private var _startCenter = CGPoint();
     
@@ -29,7 +33,7 @@ final class CardView: UIView {
         let container = UIView()
         container.frame = CGRect(x: 0, y: 0, width: 350, height: 135)
         container.layer.cornerRadius = 12
-        let blurEffect = UIBlurEffect(style: .light)
+        let blurEffect = UIBlurEffect(style: .dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.layer.opacity = 0.7
         blurEffectView.frame = container.frame
@@ -96,37 +100,60 @@ final class CardView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 36)
         label.textColor = .white
-        label.frame = CGRect(x: 0, y: 0, width: 150, height: 50)
+        label.frame = CGRect(x: 0, y: 0, width: 400, height: 50)
             
         return label
     }()
     
-    let descriptionLabel: UILabel = {
-        let label = UILabel()
+    let descriptionLabel: UITextView = {
+        let label = UITextView()
         label.text = "Описание выглядит вот \n так вот так оно и выглядит"
-        label.numberOfLines = 2
+//        label.numberOfLines = 0
+        
+//        label.lineBreakMode = .byWordWrapping
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 24)
         label.textColor = .white
-        label.frame = CGRect(x: 0, y: 0, width: 400, height: 100)
+        label.isEditable = false
+        label.backgroundColor = .clear
+        
+//        label.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
+        label.frame.size.width = 300
+        label.sizeToFit()
             
         return label
     }()
     
-    let tagsView: UILabel = {
+    let tagsView: UIView = {
+        let label = UIView()
+        label.frame = CGRect(x: 0, y: 0, width: 400, height: 200)
+        return label
+    }()
+    
+    func createTagLabel (name: String, index: UInt) -> UILabel {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = NSTextAlignment.center;
         label.layer.cornerRadius = 12;
         label.layer.borderWidth = 1
         label.layer.borderColor = UIColor.white.cgColor
-        label.text = "Спорт"
+        label.text = name
+        label.text?.append(" ")
         label.font = UIFont.systemFont(ofSize: 24)
         label.textColor = .white
+        
+        // 1 2 3 - 0
+        // 4 5 6 - 100
+        
+        // 1 - 0
+        // 2 - 100
+        // 3 - 200
+        // 4 - 0
         label.frame = CGRect(x: 0, y: 0, width: 100, height: 36)
-            
+//        label.bounds = CGRect(x: x, y: y, width: 100, height: 36)
+        
         return label
-    }()
+    }
     
     
 
@@ -160,19 +187,95 @@ final class CardView: UIView {
     }()
     
     
+    let nextImgButton: UIButton = {
+        let button = UIButton(type: .system)
+        let icon = UIImage(named: "carousel_right")
+        let iconOriginalColors = icon?.withRenderingMode(.alwaysOriginal)
+        button.setImage(iconOriginalColors, for: .normal)
+        button.frame = CGRect(x: 0, y:0 ,width: 40, height: 40)
+        return button
+    }()
+    
+    let previousImgButton: UIButton = {
+        let button = UIButton(type: .system)
+        let icon = UIImage(named: "carousel_left")
+        let iconOriginalColors = icon?.withRenderingMode(.alwaysOriginal)
+        button.setImage(iconOriginalColors, for: .normal)
+        button.frame = CGRect(x: 0, y:0 ,width: 40, height: 40)
+        return button
+    }()
+    
     weak var dataSource: CardViewDataSource? {
         didSet {
             
-            self.ageLabel.text = dataSource?.currentCard().age
-            self.nameLabel.text = dataSource?.currentCard().name
+//            self.ageLabel.text = String(dataSource!.currentCard().age)
+            self.nameLabel.text = (dataSource?.currentCard().name)! + " " + String(dataSource!.currentCard().age)
+            // TODO: fix to name
             self.descriptionLabel.text = dataSource?.currentCard().description
-            self.tagsView.text = dataSource?.currentCard().tags[0]
-            let url = URL(string: (dataSource?.currentCard().imgsURL[0])!)
+            self.descriptionLabel.sizeToFit()
+//            self.tagsView.text = dataSource?.currentCard().tags[0]
+            var counter: UInt = 0
+            for tag in dataSource!.currentCard().tags {
+                print(tag)
+                counter+=1
+                self.tagsView.addSubview(createTagLabel(name: tag, index: counter))
+            }
+            var counter1: UInt = 0
+            for tagView in self.tagsView.subviews {
+                
+                var y: Int = 50 * Int(counter1 / 3)
+                var x: Int = 100 * Int(counter1 % 3)
+                tagView.frame.size.width = 80
+                var transform = CGAffineTransform.identity
+                transform = transform.translatedBy(x: CGFloat(x), y: CGFloat(y))
+                counter1 += 1
+    //            print(location.x-self.hardSizeWidth!/2)
+//                transform = transform.rotated(by: ((location.x-self.hardSizeWidth!/2) * .pi) / 720)
+                tagView.transform = transform
+                
+            }
+            
+            
+           
+            let url =  URL(string: ("https://drip.monkeys.team/" + (dataSource?.currentCard().imgs[0])!))
             self.cardImage.kf.setImage(with: url)
+            self.currentImg = 0
+            if (dataSource?.currentCard().imgs.count)! > 1 {
+                nextImgButton.isHidden = false
+            }
         }
     }
     
-
+    
+    @objc
+    private func nextImg() {
+        self.currentImg! += 1
+        let url =  URL(string: ("https://drip.monkeys.team/" + (dataSource?.currentCard().imgs[self.currentImg!])!))
+        self.cardImage.kf.setImage(with: url)
+        
+        previousImgButton.isHidden = false
+        print((dataSource?.currentCard().imgs.count)!)
+        if (currentImg!+1 < (dataSource?.currentCard().imgs.count)!) {
+            nextImgButton.isHidden = false
+        } else {
+            nextImgButton.isHidden = true
+        }
+    }
+    
+    @objc
+    private func previousImg() {
+        self.currentImg! -= 1
+        let url =  URL(string: ("https://drip.monkeys.team/" + (dataSource?.currentCard().imgs[self.currentImg!])!))
+        self.cardImage.kf.setImage(with: url)
+        
+        nextImgButton.isHidden = false
+        
+        if (currentImg! >= 1) {
+            previousImgButton.isHidden = false
+        } else {
+            previousImgButton.isHidden = true
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -194,8 +297,15 @@ final class CardView: UIView {
         
         addSubview(cardContainerView)
         
+        addSubview(nextImgButton)
+        nextImgButton.addTarget(self, action: #selector(nextImg), for: .touchUpInside)
         
+        addSubview(previousImgButton)
+        previousImgButton.addTarget(self, action: #selector(previousImg), for: .touchUpInside)
     
+        
+        nextImgButton.isHidden = true
+        previousImgButton.isHidden = true
         
         likeButton.addTarget(self, action: #selector(likedCurrent), for: .touchUpInside)
         dislikeButton.addTarget(self, action: #selector(dislikedCurrent), for: .touchUpInside)
@@ -210,7 +320,7 @@ final class CardView: UIView {
         cardContainerView.addSubview(bottomPanelView)
         
         bottomPanelView.addSubview(nameLabel)
-        bottomPanelView.addSubview(ageLabel)
+//        bottomPanelView.addSubview(ageLabel)
         layoutShrink()
         
         addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(swipeHandler)))
@@ -270,6 +380,13 @@ final class CardView: UIView {
     }
     
     private func layoutShrink() {
+        
+        if (!reactionsEnabled) {
+            self.likeButton.isHidden = true
+            self.dislikeButton.isHidden = true
+        }
+        
+        print("layout shrink")
         var transform = CGAffineTransform.identity
         transform = transform.rotated(by: (0))
         self.expandButton.imageView?.transform = transform
@@ -280,6 +397,8 @@ final class CardView: UIView {
         self.dislikeButton.pin.left(of: self.expandButton).top(to: self.nameLabel.edge.bottom).marginRight(36)
         self.likeButton.pin.right(of: self.expandButton).top(to: self .nameLabel.edge.bottom).marginLeft(36)
         
+        self.ageLabel.pin.left(to: self.nameLabel.edge.right).top(to: self.bottomPanelView.edge.top)
+        
         self.descriptionLabel.pin.top(to: self.cardImage.edge.top).left(10)
         self.tagsView.pin.top(to: self.cardImage.edge.top).left(10)
         
@@ -287,6 +406,12 @@ final class CardView: UIView {
     }
     
     private func layoutExpanded() {
+        
+        if (!reactionsEnabled) {
+            self.likeButton.isHidden = true
+            self.dislikeButton.isHidden = true
+        }
+        print("layout expanded")
         var transform = CGAffineTransform.identity
         transform = transform.rotated(by: (.pi))
         self.expandButton.imageView?.transform = transform
@@ -294,14 +419,22 @@ final class CardView: UIView {
         
         self.bottomPanelView.pin.bottom(to: cardImage.edge.bottom)
         self.expandButton.pin.hCenter(to: self.cardImage.edge.hCenter)
+        
+     
        
         self.expandButton.pin.hCenter(to: self.cardImage.edge.hCenter)
         self.expandButton.pin.below(of: self.nameLabel)
         self.dislikeButton.pin.left(of: self.expandButton).top(to: self.nameLabel.edge.bottom).marginRight(36)
         self.likeButton.pin.right(of: self.expandButton).top(to: self .nameLabel.edge.bottom).marginLeft(36)
         
+        self.ageLabel.pin.left(to: self.nameLabel.edge.right).top(to: self.bottomPanelView.edge.top)
+        
         self.descriptionLabel.pin.top(to: self.bottomPanelView.edge.bottom).left(10)
         self.tagsView.pin.top(to: self.descriptionLabel.edge.bottom).left(10)
+        
+//        self.nameLabel.pin.left(to: self.bottomPanelView.edge.left).marginLeft(24).top(to: self.bottomPanelView.edge.top)
+//        self.ageLabel.pin.left(to: self.nameLabel.edge.right).top(to: self.bottomPanelView.edge.top)
+        
         
         self.expandButton.addTarget(self, action: #selector(self.shrinkCurrent), for: .touchUpInside)
     }
@@ -314,14 +447,14 @@ final class CardView: UIView {
         if(gesture.state == UIPanGestureRecognizer.State.began) {
             self._startCenter = self.center
             shrinkCurrent()
-            print("check")
+//            print("check")
         } else if (gesture.state == UIPanGestureRecognizer.State.changed) {
 
             let location = gesture.location(in: self.superview)
             var transform = CGAffineTransform.identity
             transform = transform.translatedBy(x: location.x - self._startCenter.x, y: location.y - self._startCenter.y)
             
-            print(location.x-self.hardSizeWidth!/2)
+//            print(location.x-self.hardSizeWidth!/2)
             transform = transform.rotated(by: ((location.x-self.hardSizeWidth!/2) * .pi) / 720)
             self.transform = transform
 //            feedView.center = locat
@@ -345,10 +478,21 @@ final class CardView: UIView {
     }
     
     private func layoutCardItems() {
+        print("layout start")
+                
+        if (!reactionsEnabled) {
+                    self.likeButton.isHidden = true
+                    self.dislikeButton.isHidden = true
+                }
+                
         self.bottomPanelView.frame = CGRect(x: 0, y: 0, width: self.hardSizeWidth!, height: self.hardSizeHeight! * 0.18)
         self.cardImage.frame = CGRect(x:0, y:0, width: self.hardSizeWidth!, height: self.hardSizeHeight!)
         self.cardContainerView.pin.top(0).hCenter().width(100%).maxWidth(400).pinEdges()
         self.bottomPanelView.pin.bottom(to: self.cardImage.edge.bottom)
+        
+        self.previousImgButton.pin.left(self.pin.safeArea.left + 5).top(self.pin.safeArea.top + 50).height(50).width(50)
+        self.nextImgButton.pin.right(self.pin.safeArea.right + 5).top(self.pin.safeArea.top + 50).height(50).width(50)
+        
         self.nameLabel.pin.left(to: self.bottomPanelView.edge.left).marginLeft(24).top(to: self.bottomPanelView.edge.top)
         
         self.ageLabel.pin.left(to: self.nameLabel.edge.right).top(to: self.bottomPanelView.edge.top)
