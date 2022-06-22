@@ -25,9 +25,13 @@ final class CardView: UIView {
     
     var swipeLock: Bool?
     
+    var carouselLock: Bool = false
+    
     var reactionsEnabled: Bool = true
     
     private var _startCenter = CGPoint();
+    
+    var swipeRecognizer: UIGestureRecognizer?
     
     private let bottomPanelView: UIView = {
         let container = UIView()
@@ -214,12 +218,20 @@ final class CardView: UIView {
             self.descriptionLabel.text = dataSource?.currentCard().description
             self.descriptionLabel.sizeToFit()
 //            self.tagsView.text = dataSource?.currentCard().tags[0]
+            
+            for tV in self.tagsView.subviews {
+                tV.removeFromSuperview()
+            }
+            
+            
             var counter: UInt = 0
+            
             for tag in dataSource!.currentCard().tags {
                 print(tag)
                 counter+=1
                 self.tagsView.addSubview(createTagLabel(name: tag, index: counter))
             }
+            
             var counter1: UInt = 0
             for tagView in self.tagsView.subviews {
                 
@@ -240,7 +252,7 @@ final class CardView: UIView {
             let url =  URL(string: ("https://drip.monkeys.team/" + (dataSource?.currentCard().imgs[0])!))
             self.cardImage.kf.setImage(with: url)
             self.currentImg = 0
-            if (dataSource?.currentCard().imgs.count)! > 1 {
+            if ((dataSource?.currentCard().imgs.count)! > 1) && !self.carouselLock {
                 nextImgButton.isHidden = false
             }
         }
@@ -323,8 +335,9 @@ final class CardView: UIView {
 //        bottomPanelView.addSubview(ageLabel)
         layoutShrink()
         
-        addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(swipeHandler)))
-        
+        swipeRecognizer = UIPanGestureRecognizer(target: self, action: #selector(swipeHandler))
+        addGestureRecognizer(swipeRecognizer!)
+//        removeGestureRecognizer(<#T##gestureRecognizer: UIGestureRecognizer##UIGestureRecognizer#>)
         
     }
     
@@ -335,7 +348,6 @@ final class CardView: UIView {
     @objc
     private func likedCurrent() {
         print("liked current")
-        
         UIView.animate(withDuration: 1, animations: {
             self.transform = .identity
             self.center = CGPoint(x: self.hardSizeWidth! * 2, y: self.center.y)
@@ -442,6 +454,8 @@ final class CardView: UIView {
     @objc
     func swipeHandler(gesture: UIPanGestureRecognizer) {
         if(self.swipeLock ?? false){
+            
+            self.removeGestureRecognizer(self.swipeRecognizer!)
             return
         }
         if(gesture.state == UIPanGestureRecognizer.State.began) {

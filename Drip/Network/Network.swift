@@ -174,6 +174,17 @@ func feedRequest(completion: @escaping (Result<Users>) -> Void) {
     }
 }
 
+func likesRequest(completion: @escaping (Result<allUsers>) -> Void) {
+    request(method: "GET", path: "user/likes", headers: [:], body: nil, objectType: allUsers.self) { (result: Result) in
+        switch result {
+        case .success(let object):
+            completion(Result.success(object))
+        case .failure(let error):
+            completion(Result.failure(error))
+        }
+    }
+}
+
 // TODO: what is in response body?
 func reactionRequest(reaction: Reaction, completion: @escaping (Result<Array<User>>) -> Void) {
     guard let jsonData = try? JSONEncoder().encode(reaction) else {

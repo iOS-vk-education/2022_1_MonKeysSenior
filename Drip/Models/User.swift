@@ -2,6 +2,7 @@ struct User: Codable {
     var id: UInt64
     var email: String
     var password: String
+    var name: String
     var gender: String
     var prefer: String
     var fromAge: Int
@@ -13,12 +14,12 @@ struct User: Codable {
     var tags: Array<String>
     var reportStatus: String
     var payment: Bool
-    var name: String
     
     enum CodingKeys: String, CodingKey {
         case id
         case email
         case password
+        case name
         case gender
         case prefer
         case fromAge = "fromage"
@@ -30,17 +31,20 @@ struct User: Codable {
         case tags
         case reportStatus
         case payment
-        case name
     }
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
         try container.encode(email, forKey: .email)
-        try container.encode(name, forKey: .name)
         do {
             try container.encode(password, forKey: .password)
         } catch {
             try container.encode("", forKey: .password)
+        }
+        do {
+            try container.encode(name, forKey: .name)
+        } catch {
+            try container.encode("", forKey: .name)
         }
         try container.encode(gender, forKey: .gender)
         do {
@@ -78,13 +82,21 @@ struct User: Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(UInt64.self, forKey: .id)
         email = try container.decode(String.self, forKey: .email)
-        name = try container.decode(String.self, forKey: .name)
         do {
             password = try container.decode(String.self, forKey: .password)
         } catch {
             password = ""
         }
-        gender = try container.decode(String.self, forKey: .gender)
+        do {
+            name = try container.decode(String.self, forKey: .name)
+        } catch {
+            name = ""
+        }
+        do {
+            gender = try container.decode(String.self, forKey: .gender)
+        } catch {
+            gender = ""
+        }
         do {
             prefer = try container.decode(String.self, forKey: .prefer)
         } catch {
@@ -100,14 +112,26 @@ struct User: Codable {
         } catch {
             toAge = 0
         }
-        date = try container.decode(String.self, forKey: .date)
-        age = try container.decode(Int.self, forKey: .age)
+        do {
+            date = try container.decode(String.self, forKey: .date)
+        } catch {
+            date = ""
+        }
+        do {
+            age = try container.decode(Int.self, forKey: .age)
+        } catch {
+            age = 0
+        }
         do {
             description = try container.decode(String.self, forKey: .description)
         } catch {
             description = ""
         }
-        imgs = try container.decode(Array<String>.self, forKey: .imgs)
+        do {
+            imgs = try container.decode(Array<String>.self, forKey: .imgs)
+        } catch {
+            imgs = []
+        }
         do {
             tags = try container.decode(Array<String>.self, forKey: .tags)
         } catch {
@@ -130,3 +154,6 @@ struct Users: Codable {
     var Users: [User] = Array();
 }
 
+struct allUsers: Codable {
+    var allUsers: Dictionary<String, User>;
+}

@@ -8,13 +8,34 @@
 import UIKit
 
 
+protocol LikesViewCollectionCellDelegate: AnyObject {
+    func remove(id: Int) -> Void
+}
+
 final class LikesCollectionViewCell: UICollectionViewCell, CardViewDelegate {
+    
+    
+    weak var delegate: LikesViewCollectionCellDelegate?
+    
+    var card: User?
+    
+    
     func likedCurrent() {
         print("liked")
+        print(self.card?.name)
+        let id: Int = Int(self.card!.id)
+        
+        reactionRequest(reaction: Reaction(id: UInt64(id), reaction: 1), completion: {_ in } )
+        self.delegate?.remove(id: id)
     }
     
     func dislikedCurrent() {
         print("disliked")
+        print(self.card?.name)
+        let id: Int = Int(self.card!.id)
+        reactionRequest(reaction: Reaction(id: UInt64(id), reaction: 2), completion: {_ in } )
+        self.delegate?.remove(id: id)
+//        self.cardView.delegate?.likedCurrent()
     }
     
     func expandCurrent() {
@@ -27,12 +48,20 @@ final class LikesCollectionViewCell: UICollectionViewCell, CardViewDelegate {
         card.hardSizeWidth = UIScreen.main.bounds.width-64
         card.hardSizeHeight = UIScreen.main.bounds.height * 0.6
         card.swipeLock = true
+        card.carouselLock = true
 //        card.swipeLock = true
-//        card.delegate = self
-//        card.dataSource = self
         
+//        card.dataSource = self
         return card
     }()
+    
+    
+    func configure(dataSource: CardViewDataSource, delegate: CardViewDelegate) {
+        cardView.dataSource = dataSource
+        self.card = dataSource.currentCard()
+//        cardView.delegate = delegate
+    }
+    
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -46,6 +75,7 @@ final class LikesCollectionViewCell: UICollectionViewCell, CardViewDelegate {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        cardView.delegate = self
         contentView.addSubview(cardView)
         
     }

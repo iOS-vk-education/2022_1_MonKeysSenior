@@ -1,27 +1,78 @@
 import UIKit
 import PinLayout
 
-final class MatchListViewController: UIViewController, UIScrollViewDelegate, CardViewDelegate, CardViewDataSource, UICollectionViewDataSource, UICollectionViewDelegate {
+
+
+class CardViewPrefetchDataSource: CardViewDataSource {
+    var card: User?
+    init(user: User) {
+        self.card = user
+    }
+    func currentCard() -> User {
+        return self.card!
+    }
+}
+
+class CardViewPrefetchDelegate: CardViewDelegate {
+    var card: User?
+    init(user: User) {
+        self.card = user
+    }
+    func likedCurrent() {
+        print("like \(String(describing: self.card?.name)) \(String(describing: self.card?.id))")
+    }
+    func dislikedCurrent() {
+        print("dislike \(String(describing: self.card?.name)) \(String(describing: self.card?.id))")
+    }
+    func expandCurrent() {
+        print("expand")
+    }
+}
+
+
+
+final class MatchListViewController: UIViewController, UIScrollViewDelegate, CardViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate,LikesViewCollectionCellDelegate {
+    
+    
+    let model = LikesModel()
+    
+    func remove(id: Int) {
+        print("removing \(id)")
+        _ = self.model.removeById(id: id)
+        self.likesCollectionView.reloadData()
+        
+        if(self.model.getCards().count == 0) {
+            outOfCards()
+            self.textLabel.isHidden = true
+        }
+    }
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return self.model.getCards().count
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = likesCollectionView.dequeueReusableCell(withReuseIdentifier: "LikesCollectionViewCell", for: indexPath) as? LikesCollectionViewCell else {
+        print(indexPath)
+        guard let cell = likesCollectionView.dequeueReusableCell(withReuseIdentifier: "LikesCollectionViewCell", for: indexPath) as? LikesCollectionViewCell
+        
+        else {
             print("check")
             return .init()
         }
+        cell.delegate = self
+        let dataSource = CardViewPrefetchDataSource(user: self.model.getCards()[indexPath.item])
+        let delegateSource = CardViewPrefetchDelegate(user: self.model.getCards()[indexPath.item])
+        cell.configure(dataSource: dataSource, delegate: delegateSource)
         
         return cell
     }
     
     
-    let model = FeedModel()
     
-    func currentCard() -> User {
-        return self.model.currentCard()!
-    }
+    
+  
     
     func likedCurrent() {
         print("disliked")
@@ -43,10 +94,42 @@ final class MatchListViewController: UIViewController, UIScrollViewDelegate, Car
         label.textColor = .white
         label.numberOfLines = 2
         label.text = "Вы понравились \nнескольким людям"
-        label.frame = CGRect(x: 0, y: 100, width:1, height: 200)
+        label.frame = CGRect(x: 0, y: 100, width:400, height: 200)
         
         return label
     }()
+    
+    
+    private func outOfCards() -> Void {
+        let outOfCards = UIImageView()
+        
+        let descriptionLabel: UILabel = {
+            let label = UILabel()
+            label.text = "У вас пока нет лайков"
+//            label.translatesAutoresizingMaskIntoConstraints = false
+            label.font = UIFont.systemFont(ofSize: 24)
+            label.textAlignment = NSTextAlignment.center;
+            label.textColor = .white
+            label.frame = CGRect(x: 0, y: 200, width: 300, height: 100)
+//            label.textAlignment = .
+            
+                
+            return label
+        }()
+        
+        outOfCards.image = UIImage(named: "heart_gradient")
+        outOfCards.frame = CGRect(x: 200, y: 0, width: 200, height: 200)
+        
+        outOfCards.center = view.center
+        descriptionLabel.center = view.center
+        
+        
+        
+//        descriptionLabel.pin.left(view.pin.safeArea.left + 20).top(view.pin.safeArea.top + 20).height(50).width(50)
+        
+        view.addSubview(outOfCards)
+        view.addSubview(descriptionLabel)
+    }
     
     private let likesCollectionView: UICollectionView = {
         let collectionLayout = UICollectionViewFlowLayout()
@@ -88,9 +171,15 @@ final class MatchListViewController: UIViewController, UIScrollViewDelegate, Car
         likesCollectionView.showsHorizontalScrollIndicator = false
         likesCollectionView.backgroundColor = .clear
     
-
+        
+        if(self.model.getCards().count == 0) {
+            outOfCards()
+            return
+        }
+        
         view.addSubview(textLabel)
         view.addSubview(likesCollectionView)
+        
         
     
     }
@@ -115,3 +204,62 @@ extension MatchListViewController: UICollectionViewDelegateFlowLayout {
             return 12
         }
     }
+
+
+
+import Foundation
+
+final class LikesModel {
+    private var cards: [User] = []
+    private var counter: Int
+    
+    init(){
+        self.counter = 0;
+        
+        loadData()
+    }
+    
+    func getCards() -> [User] {
+        return self.cards
+    }
+    
+    func removeById(id: Int) -> Int {
+        var ix: Int = 0
+        for (element) in self.cards {
+            if element.id == id {
+                if(ix < self.cards.count) {
+                    self.cards.remove(at: ix)
+                }
+               
+                print("removed")
+            }
+            ix+=1
+            
+        }
+        return ix-1
+        
+    }
+    
+    
+    func loadData(completion: (() -> Void)? = nil) -> Void {
+        print("likes")
+        likesRequest(completion: { (result: Result) in
+            switch result {
+            case .success(let result):
+                print(result as Any)
+                self.cards = Array(result!.allUsers.values.map { $0 })
+//                for (value) in result {
+//                    self.cards.append(value)
+//                }
+                print("likes")
+//                if ((result?.Users) != nil) {
+//                    self.cards = result!.Users
+//                }
+            case .failure(let error):
+                print(error)
+                print("an error likes")
+            }
+        })
+        
+    }
+}
