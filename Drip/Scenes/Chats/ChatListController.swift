@@ -1,6 +1,7 @@
 import UIKit
 import PinLayout
 
+    
 final class ChatListViewController: UIViewController {
     private let matchesLabel = UILabel()
     private let chatsLabel = UILabel()
@@ -28,14 +29,68 @@ final class ChatListViewController: UIViewController {
         return UICollectionView(frame: .zero, collectionViewLayout: collectionLayout)
     }()
     
-    var urls: [String] = [
-        "https://is4-ssl.mzstatic.com/image/thumb/Purple123/v4/8e/47/7c/8e477c39-39b7-7cdf-0a49-999131ed996a/source/512x512bb.jpg",
-        "https://cdn.jim-nielsen.com/ios/1024/weather-fine-2016-03-15.png",
-        "https://iphone-image.apkpure.com/v2/app/0/4/2/042a955bdd194eaca834a948127ae474.jpg"
-    ]
+    var matchesCount: Int = 0
+    var chatsCount: Int = 0
+    
+    var matchesNames: [String] = []
+    var matchesUrls: [String] = []
+    
+    var chatsNames: [String] = []
+    var chatsUrls: [String] = []
+    var chatsTexts: [String] = []
+    
+    func getMatches() {
+        matchesRequest() { (result: Result) in
+            switch result {
+            case .success(let resObj):
+                self.matchesCount = resObj?.allUsers.count ?? 0
+                self.matchesNames = resObj!.allUsers.sorted(by: {$0.0 < $1.0}).map({item in item.value.name})
+                self.matchesUrls = resObj!.allUsers.sorted(by: {$0.0 < $1.0}).map({item in "https://drip.monkeys.team/" + item.value.imgs[0]})
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func getSearchMatches(searchStr: String) {
+        let searchObj = Search(searchTmpl: searchStr + "%");
+        matchesRequest(search: searchObj) { (result: Result) in
+            switch result {
+            case .success(let resObj):
+                self.matchesCount = resObj?.allUsers.count ?? 0
+                self.matchesNames = resObj!.allUsers.sorted(by: {$0.0 < $1.0}).map({item in item.value.name})
+                self.matchesUrls = resObj!.allUsers.sorted(by: {$0.0 < $1.0}).map({item in "https://drip.monkeys.team/" + item.value.imgs[0]})
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+//                    self.matchCollectionView.reloadData()
+//                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func getChatsList() {
+        chatsRequest() { (result: Result) in
+            switch result {
+            case .success(let resObj):
+                self.chatsCount = resObj?.Chats.count ?? 0
+                let sortedChats = resObj!.Chats.sorted(by: {$0.messages[0].date > $1.messages[0].date})
+                self.chatsNames = sortedChats.map({item in item.name})
+                self.chatsUrls = sortedChats.map({item in "https://drip.monkeys.team/" + item.img})
+                self.chatsTexts = sortedChats.map({item in item.messages[0].text})
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        getMatches()
+        getChatsList()
+        
+        sleep(1)
         
         navigationItem.titleView = searchChatController.searchBar
         searchChatController.hidesNavigationBarDuringPresentation = false
@@ -60,10 +115,14 @@ final class ChatListViewController: UIViewController {
         
         chatCollectionView.register(ChatCollectionViewCell.self, forCellWithReuseIdentifier: "ChatCollectionViewCell")
         
+
+        
         view.addSubview(matchesLabel)
         view.addSubview(matchCollectionView)
         view.addSubview(chatsLabel)
         view.addSubview(chatCollectionView)
+//        self.chatCollectionView.reloadData()
+//        self.matchCollectionView.reloadData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -107,23 +166,25 @@ final class ChatListViewController: UIViewController {
 
 extension ChatListViewController: UISearchResultsUpdating, UISearchControllerDelegate {
     func updateSearchResults(for searchController: UISearchController) {
-//        if let searchText = searchController.searchBar.text {
-//                    filteredData = searchText.isEmpty ? data : data.filter({(dataString: String) -> Bool in
-//                        return dataString.rangeOfString(searchText, options: .CaseInsensitiveSearch) != nil
-//                    })
-//
-//                    tableView.reloadData()
-//                }
+        if let searchText = searchController.searchBar.text {
+            if searchText != "" {
+                getSearchMatches(searchStr: searchText)
+            } else {
+                getMatches()
+            }
+
+            self.matchCollectionView.reloadData()
+        }
     }
 }
 
 extension ChatListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == matchCollectionView {
-            return 50
+            return matchesCount
         }
         else {
-            return 50
+            return chatsCount
         }
     }
     
@@ -133,7 +194,7 @@ extension ChatListViewController: UICollectionViewDelegate, UICollectionViewData
                 return .init()
             }
             
-            cell.configure(with: urls[indexPath.item % urls.count])
+            cell.configure(with: matchesUrls[indexPath.item], name: matchesNames[indexPath.item])
             
             return cell
         }
@@ -141,8 +202,8 @@ extension ChatListViewController: UICollectionViewDelegate, UICollectionViewData
             guard let cell = chatCollectionView.dequeueReusableCell(withReuseIdentifier: "ChatCollectionViewCell", for: indexPath) as? ChatCollectionViewCell else {
                 return .init()
             }
-            
-            cell.configure(with: urls[indexPath.item % urls.count])
+
+            cell.configure(with: chatsUrls[indexPath.item], Name: chatsNames[indexPath.item], text: chatsTexts[indexPath.item])
             
             return cell
         }

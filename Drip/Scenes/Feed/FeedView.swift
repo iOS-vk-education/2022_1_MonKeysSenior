@@ -65,6 +65,7 @@ final class CardView: UIView {
         image.frame = CGRect(x:0, y:0, width: 350, height: 575)
         image.layer.cornerRadius = 12;
         image.clipsToBounds = true
+        image.layer.backgroundColor = CGColor(red: 1, green: 1, blue: 1, alpha: 1)
         
         
         return image
@@ -101,8 +102,10 @@ final class CardView: UIView {
     let nameLabel: UILabel = {
         let label = UILabel()
         label.text = "Влад"
+        
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 36)
+        label.font = UIFont.boldSystemFont(ofSize: 36)
+//        label.bold
         label.textColor = .white
         label.frame = CGRect(x: 0, y: 0, width: 400, height: 50)
             
@@ -116,13 +119,13 @@ final class CardView: UIView {
         
 //        label.lineBreakMode = .byWordWrapping
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 24)
+        label.font = UIFont.boldSystemFont(ofSize: 24)
         label.textColor = .white
         label.isEditable = false
         label.backgroundColor = .clear
         
 //        label.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
-        label.frame.size.width = 300
+        label.frame.size.width = 400
         label.sizeToFit()
             
         return label
@@ -143,7 +146,7 @@ final class CardView: UIView {
         label.layer.borderColor = UIColor.white.cgColor
         label.text = name
         label.text?.append(" ")
-        label.font = UIFont.systemFont(ofSize: 24)
+        label.font = UIFont.boldSystemFont(ofSize: 24)
         label.textColor = .white
         
         // 1 2 3 - 0
@@ -247,9 +250,13 @@ final class CardView: UIView {
                 
             }
             
+            var url: URL?
+            if ( dataSource?.currentCard().imgs.count == 0 ) {
+                url = URL(string: "https://www.pcfix.lt/wp-content/uploads/2019/10/default-user-image.png")
+            } else {
+                url = URL(string: ("https://drip.monkeys.team/" + (dataSource?.currentCard().imgs[0])!))
+            }
             
-           
-            let url =  URL(string: ("https://drip.monkeys.team/" + (dataSource?.currentCard().imgs[0])!))
             self.cardImage.kf.setImage(with: url)
             self.currentImg = 0
             if ((dataSource?.currentCard().imgs.count)! > 1) && !self.carouselLock {
@@ -262,6 +269,9 @@ final class CardView: UIView {
     @objc
     private func nextImg() {
         self.currentImg! += 1
+        if self.currentImg! > (dataSource?.currentCard().imgs.count)! {
+            return
+        }
         let url =  URL(string: ("https://drip.monkeys.team/" + (dataSource?.currentCard().imgs[self.currentImg!])!))
         self.cardImage.kf.setImage(with: url)
         

@@ -19,7 +19,7 @@ final class FeedModel {
     
     func currentCard() -> User? {
 //        sleep(1)
-        if self.cards.count - counter < 1 {
+        if self.cards.count - counter < 2 {
             self.counter = 0;
             loadData()
         }

@@ -58,7 +58,7 @@ final class FeedViewController: UIViewController {
             let label = UILabel()
             label.text = "Карточки кончились"
 //            label.translatesAutoresizingMaskIntoConstraints = false
-            label.font = UIFont.systemFont(ofSize: 24)
+            label.font = UIFont.boldSystemFont(ofSize: 24)
             label.textAlignment = NSTextAlignment.center;
             label.textColor = .white
             label.frame = CGRect(x: 0, y: 200, width: 300, height: 100)
@@ -80,6 +80,8 @@ final class FeedViewController: UIViewController {
         
         view.addSubview(outOfCards)
         view.addSubview(descriptionLabel)
+        
+    
     }
     
     

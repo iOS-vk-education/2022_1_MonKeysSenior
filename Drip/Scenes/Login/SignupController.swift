@@ -15,7 +15,7 @@ final class SignupViewController: UIViewController {
 
     let emailTextField: TextField = {
         let tf = TextField()
-        tf.setupDefault(placeholder: "Email", security: false)
+        tf.setupDefault(defaultValue: nil, placeholder: "Email", security: false)
         tf.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
         tf.addTarget(self, action: #selector(handleEmailInput), for: .editingChanged)
         return tf
@@ -29,7 +29,7 @@ final class SignupViewController: UIViewController {
 
     let passwordTextField: TextField = {
         let tf = TextField()
-        tf.setupDefault(placeholder: "Password", security: true)
+        tf.setupDefault(defaultValue: nil, placeholder: "Password", security: true)
         tf.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
         tf.addTarget(self, action: #selector(handlePasswordInput), for: .editingChanged)
         return tf
@@ -43,7 +43,7 @@ final class SignupViewController: UIViewController {
     
     let repeatPasswordTextField: TextField = {
         let tf = TextField()
-        tf.setupDefault(placeholder: "Repeat password", security: true)
+        tf.setupDefault(defaultValue: nil, placeholder: "Repeat password", security: true)
         tf.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
         tf.addTarget(self, action: #selector(handleRepeatPasswordInput), for: .editingChanged)
         return tf
@@ -237,10 +237,17 @@ final class SignupViewController: UIViewController {
             switch result {
             case .success(_):
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-                    let tabBarController = self.factory.buildTabBarController()
-                    tabBarController.modalPresentationStyle = .fullScreen
-                    tabBarController.modalTransitionStyle = .flipHorizontal
-                    self.navigationController?.present(tabBarController, animated: true, completion: nil)
+                    let defaults = UserDefaults.standard
+                    defaults.set(false, forKey: "isFullRegistered")
+                    defaults.set(true, forKey: "byCookes")
+                    let profileController = ProfileSignupViewController()
+                    let navController = UINavigationController(rootViewController: profileController)
+                    navController.navigationBar.barStyle = .black
+                    navController.modalPresentationStyle = .fullScreen
+                    UIView.animate(withDuration: 1, animations:  {
+                        profileController.view.layoutSubviews()
+                    })
+                    self.present(navController, animated: false)
                 }
             case .failure(let error):
                 print(error)
@@ -248,4 +255,3 @@ final class SignupViewController: UIViewController {
         }
     }
 }
-

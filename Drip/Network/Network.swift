@@ -202,8 +202,9 @@ func reactionRequest(reaction: Reaction, completion: @escaping (Result<Array<Use
     }
 }
 
-func matchesRequest(completion: @escaping (Result<Array<User>>) -> Void) {
-    request(method: "GET", path: "match", headers: [:], body: nil, objectType: Array<User>.self) { (result: Result) in
+
+func matchesRequest(completion: @escaping (Result<allUsers>) -> Void) {
+    request(method: "GET", path: "matches", headers: [:], body: nil, objectType: allUsers.self) { (result: Result) in
         switch result {
         case .success(let object):
             completion(Result.success(object))
@@ -213,13 +214,24 @@ func matchesRequest(completion: @escaping (Result<Array<User>>) -> Void) {
     }
 }
 
-func matchesRequest(search: Search, completion: @escaping (Result<Array<User>>) -> Void) {
+func matchesRequest(search: Search, completion: @escaping (Result<allUsers>) -> Void) {
     guard let jsonData = try? JSONEncoder().encode(search) else {
-        print("loginRequest: convert model to JSON data failed")
+        print("matchesRequest: convert model to JSON data failed")
         return
     }
 
-    request(method: "POST", path: "match", headers: [:], body: jsonData, objectType: Array<User>.self) { (result: Result) in
+    request(method: "POST", path: "matches", headers: [:], body: jsonData, objectType: allUsers.self) { (result: Result) in
+        switch result {
+        case .success(let object):
+            completion(Result.success(object))
+        case .failure(let error):
+            completion(Result.failure(error))
+        }
+    }
+}
+
+func chatsRequest(completion: @escaping (Result<Chats>) -> Void) {
+    request(method: "GET", path: "chats", headers: [:], body: nil, objectType: Chats.self) { (result: Result) in
         switch result {
         case .success(let object):
             completion(Result.success(object))

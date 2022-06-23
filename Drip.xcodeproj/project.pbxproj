@@ -38,6 +38,8 @@
 		AABF60A92809EBB100D08900 /* ChatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABF60A82809EBB100D08900 /* ChatCollectionViewCell.swift */; };
 		CC3694FD2852418D00CF97C9 /* LikesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3694FC2852418D00CF97C9 /* LikesController.swift */; };
 		CC3694FF285241B000CF97C9 /* LikesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3694FE285241B000CF97C9 /* LikesView.swift */; };
+		CC65C3E42863C0F0000CD4F1 /* ProfileSignupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC65C3E32863C0EF000CD4F1 /* ProfileSignupController.swift */; };
+		CC65C3E62864874D000CD4F1 /* Chats.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC65C3E52864874C000CD4F1 /* Chats.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +75,8 @@
 		AABF60A82809EBB100D08900 /* ChatCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCollectionViewCell.swift; sourceTree = "<group>"; };
 		CC3694FC2852418D00CF97C9 /* LikesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesController.swift; sourceTree = "<group>"; };
 		CC3694FE285241B000CF97C9 /* LikesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesView.swift; sourceTree = "<group>"; };
+		CC65C3E32863C0EF000CD4F1 /* ProfileSignupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSignupController.swift; sourceTree = "<group>"; };
+		CC65C3E52864874C000CD4F1 /* Chats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chats.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,7 @@
 				AA586A0D281015FC00E0F777 /* Search.swift */,
 				AA586A0F2810160500E0F777 /* User.swift */,
 				AA586A112810161900E0F777 /* Profile.swift */,
+				CC65C3E52864874C000CD4F1 /* Chats.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -146,6 +151,7 @@
 			children = (
 				AA7C74A027DDE6F200BA0A97 /* ProfileController.swift */,
 				AA6318C0281076A600C364E1 /* ProfileSettingsController.swift */,
+				CC65C3E32863C0EF000CD4F1 /* ProfileSignupController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -295,6 +301,7 @@
 				AA586A202810174F00E0F777 /* FeedController.swift in Sources */,
 				AA586A122810161900E0F777 /* Profile.swift in Sources */,
 				AA586A012810158300E0F777 /* Network.swift in Sources */,
+				CC65C3E42863C0F0000CD4F1 /* ProfileSignupController.swift in Sources */,
 				AA7C74A127DDE6F200BA0A97 /* ProfileController.swift in Sources */,
 				AA586A19281016EC00E0F777 /* TextField.swift in Sources */,
 				AA7C749827DDDF4800BA0A97 /* AppFactory.swift in Sources */,
@@ -310,6 +317,7 @@
 				CC3694FD2852418D00CF97C9 /* LikesController.swift in Sources */,
 				AA7C748427DDDA6100BA0A97 /* AppDelegate.swift in Sources */,
 				AA586A272810184200E0F777 /* LoginController.swift in Sources */,
+				CC65C3E62864874D000CD4F1 /* Chats.swift in Sources */,
 				AA586A17281016E200E0F777 /* PromptLabel.swift in Sources */,
 				AA586A08281015C600E0F777 /* Reaction.swift in Sources */,
 				AA586A222810175B00E0F777 /* FeedView.swift in Sources */,

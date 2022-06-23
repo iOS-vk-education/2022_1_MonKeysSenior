@@ -35,6 +35,7 @@ final class MatchListViewController: UIViewController, UIScrollViewDelegate, Car
     
     
     let model = LikesModel()
+    let refreshControl = UIRefreshControl()
     
     func remove(id: Int) {
         print("removing \(id)")
@@ -90,7 +91,7 @@ final class MatchListViewController: UIViewController, UIScrollViewDelegate, Car
     let textLabel: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 24)
+        label.font = UIFont.boldSystemFont(ofSize: 24)
         label.textColor = .white
         label.numberOfLines = 2
         label.text = "Вы понравились \nнескольким людям"
@@ -107,7 +108,7 @@ final class MatchListViewController: UIViewController, UIScrollViewDelegate, Car
             let label = UILabel()
             label.text = "У вас пока нет лайков"
 //            label.translatesAutoresizingMaskIntoConstraints = false
-            label.font = UIFont.systemFont(ofSize: 24)
+            label.font = UIFont.boldSystemFont(ofSize: 24)
             label.textAlignment = NSTextAlignment.center;
             label.textColor = .white
             label.frame = CGRect(x: 0, y: 200, width: 300, height: 100)
@@ -171,6 +172,15 @@ final class MatchListViewController: UIViewController, UIScrollViewDelegate, Car
         likesCollectionView.showsHorizontalScrollIndicator = false
         likesCollectionView.backgroundColor = .clear
     
+        let scrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
+        scrollView.refreshControl = refreshControl
+        scrollView.addSubview(refreshControl)
+        view.addSubview(scrollView)
+        refreshControl.attributedTitle = NSAttributedString(string: "")
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        
+       
+        
         
         if(self.model.getCards().count == 0) {
             outOfCards()
@@ -181,7 +191,18 @@ final class MatchListViewController: UIViewController, UIScrollViewDelegate, Car
         view.addSubview(likesCollectionView)
         
         
+        
+        
     
+    }
+    
+    @objc func refresh(_ sender: AnyObject) {
+       print("refresh")
+        sleep(1)
+        self.model.update()
+        self.likesCollectionView.reloadData()
+//        self.viewDidLoad()
+        refreshControl.endRefreshing()
     }
 }
 
@@ -189,7 +210,7 @@ extension MatchListViewController: UICollectionViewDelegateFlowLayout {
         func collectionView(_ collectionView: UICollectionView,
                             layout collectionViewLayout: UICollectionViewLayout,
                             sizeForItemAt indexPath: IndexPath) -> CGSize {
-            return CGSize(width: UIScreen.main.bounds.width-64, height: UIScreen.main.bounds.height * 0.6)
+            return CGSize(width: UIScreen.main.bounds.width-64, height: UIScreen.main.bounds.height * 0.7)
         }
 
         func collectionView(_ collectionView: UICollectionView,
@@ -223,6 +244,9 @@ final class LikesModel {
         return self.cards
     }
     
+    func update() {
+        loadData()
+    }
     func removeById(id: Int) -> Int {
         var ix: Int = 0
         for (element) in self.cards {

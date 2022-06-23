@@ -9,7 +9,6 @@ final class MatchCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         
         matchName.font = .boldSystemFont(ofSize: 13)
-        matchName.text = "Лёша"
         
         imageView.layer.cornerRadius = 12
         imageView.clipsToBounds = true
@@ -38,7 +37,8 @@ final class MatchCollectionViewCell: UICollectionViewCell {
             .marginBottom(5)
     }
     
-    func configure(with urlString: String) {
+    func configure(with urlString: String, name: String) {
         imageView.kf.setImage(with: URL(string: urlString))
+        matchName.text = name
     }
 }

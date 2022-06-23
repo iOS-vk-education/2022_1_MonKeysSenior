@@ -55,4 +55,8 @@ final class AppFactory {
         return profile
     }
     
+    func buildProfileSettingsViewController() -> UIViewController {
+        return ProfileSettingsViewController()
+    }
+    
 }

@@ -26,6 +26,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.rootViewController = rootViewController
         window?.makeKeyAndVisible()
+        
+        
+        let defaults = UserDefaults.standard
+        let defaultValue = ["isFullRegistered" : true]
+        defaults.register(defaults: defaultValue)
+        
         return true
     }
 }

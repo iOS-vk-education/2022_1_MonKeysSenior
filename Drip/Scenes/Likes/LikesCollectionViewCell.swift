@@ -46,7 +46,7 @@ final class LikesCollectionViewCell: UICollectionViewCell, CardViewDelegate {
         let card = CardView()
 //        card.frame = CGRect(x: 0,  y:0, width: UIScreen.main.bounds.width-64, height: UIScreen.main.bounds.height*0.5)
         card.hardSizeWidth = UIScreen.main.bounds.width-64
-        card.hardSizeHeight = UIScreen.main.bounds.height * 0.6
+        card.hardSizeHeight = UIScreen.main.bounds.height * 0.7
         card.swipeLock = true
         card.carouselLock = true
 //        card.swipeLock = true

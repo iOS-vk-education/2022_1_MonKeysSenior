@@ -1,7 +1,7 @@
 import UIKit
 import PinLayout
 
-final class ProfileSettingsViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate, UITextViewDelegate {
+final class ProfileSignupViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate, UITextViewDelegate {
     let factory = AppFactory()
     var curUser: User?
     var interests: Array<String> = []
@@ -153,25 +153,17 @@ final class ProfileSettingsViewController: UIViewController, UIPickerViewDataSou
             switch result {
             case .success(_):
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-                    self.dismiss(animated: true)
+                    let defaults = UserDefaults.standard
+                    defaults.set(true, forKey: "isFullRegistered")
+                    let tabBarController = self.factory.buildTabBarController()
+                    tabBarController.modalPresentationStyle = .fullScreen
+                    self.navigationController?.present(tabBarController, animated: false, completion: nil)
                 }
             case .failure(let error):
                 print("ne lol")
                 print(error)
             }
         }
-    }
-    
-    let backBtn: UIButton = {
-        let button = UIButton(type: .custom)
-        button.setImage(UIImage(named: "back"), for: .normal)
-        button.addTarget(self, action: #selector(touchBackBtn), for: .touchUpInside)
-        return button
-    }()
-    
-    @objc
-    func touchBackBtn() {
-        dismiss(animated: true)
     }
     
     func createPickerView() {
@@ -311,7 +303,7 @@ final class ProfileSettingsViewController: UIViewController, UIPickerViewDataSou
         } else if userData?.prefer == "female" {
             self.favorField.text = "женщину"
         } else {
-            self.favorField.text = "все равно"
+            self.favorField.text = ""
         }
         self.imgs = userData?.imgs ?? []
 //        if self.imgs.count > 0 {
@@ -328,7 +320,6 @@ final class ProfileSettingsViewController: UIViewController, UIPickerViewDataSou
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
                     self.curUser = result
                     self.updateDataInFields(userData: result)
-                    self.view.addSubview(self.backBtn)
                     self.view.addSubview(self.logo)
                     self.view.addSubview(self.nameTextField)
                     self.view.addSubview(self.dateField)
@@ -356,13 +347,7 @@ final class ProfileSettingsViewController: UIViewController, UIPickerViewDataSou
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        backBtn
-            .pin
-            .top(12%)
-            .horizontally()
-            .marginLeft(5%)
-            .sizeToFit()
-        
+
         logo
             .pin
             .top(10%)

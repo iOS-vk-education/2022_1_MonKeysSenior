@@ -14,10 +14,8 @@ final class ChatCollectionViewCell: UICollectionViewCell {
         blurredView.clipsToBounds = true
         
         name.font = .boldSystemFont(ofSize: 20)
-        name.text = "Лёша"
         
         message.font = .systemFont(ofSize: 13)
-        message.text = "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text"
         
         image.layer.cornerRadius = contentView.bounds.height / 2.0 * 0.7
         image.clipsToBounds = true
@@ -61,7 +59,9 @@ final class ChatCollectionViewCell: UICollectionViewCell {
             .marginBottom(contentView.bounds.height * 0.25)
     }
     
-    func configure(with urlString: String) {
+    func configure(with urlString: String, Name: String, text: String) {
         image.kf.setImage(with: URL(string: urlString))
+        name.text = Name
+        message.text = text
     }
 }
